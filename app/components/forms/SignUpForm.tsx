@@ -1,5 +1,5 @@
 'use client';
-import React from 'react'
+import React { useEffect } from 'react'
 import { zodResolver } from "@hookform/resolvers/zod"
 import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from '../ui/form';
 import { Button } from '@radix-ui/themes';
@@ -49,13 +49,21 @@ const SignUpForm = () => {
         email: values.email,
         password: values.password,
       }),
-    });
+    })
+//double check this //
+if (response.ok) {
+  useEffect(() => {
+    router.push("/login");  
+  }, [response]);
+} else {
+  console.error("Registration failed"); 
+}
 
-    if (response.ok) {
-      router().push("/login");
-    } else {
-      console.error("Registration failed");
-    }
+    // if (response.ok) {
+    //   router().push("/home");
+    // } else {
+    //   console.error("Registration failed");
+    // }
   }
 
   return (
