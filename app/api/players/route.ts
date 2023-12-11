@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { PrismaClient } from '@prisma/client'
 import { z } from 'zod';
+import { hash } from 'bcrypt';
 
 const prisma = new PrismaClient()
 
@@ -10,6 +11,8 @@ export async function POST(req: Request) {
         const body = await req.json();
         const {first_name, last_name, username, email, password} = body;
 
+            //email is unique
+
         const existingUserByEmail = await prisma.player.findUnique({
             where: { email:email }
         });
@@ -17,14 +20,28 @@ export async function POST(req: Request) {
             return NextResponse.json({ user: null, message: 'User with this Email already exists'}, {status: 409 });
         }
 
+            //username is unique
+
         const existingUserByUsername = await prisma.player.findUnique({
             where: { username:username }
         });
         if(existingUserByUsername) {
             return NextResponse.json({ user: null, message: 'Username already exists'}, {status: 409 });
         }
+        const hashedPassword = await hash(password, 10);
 
-        return NextResponse.json(body);
+        const newPlayer = await prisma.player.create({
+            data: {
+                username: username,
+                first_name: first_name,
+                last_name: last_name,
+                email: email,
+                password: hashedPassword
+            }
+        
+        })
+
+        return NextResponse.json({newPlayer, message: 'Player created successfully'}, {status: 201})
     } catch(error){
  }
 }
