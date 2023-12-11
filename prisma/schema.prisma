@@ -11,11 +11,10 @@ datasource db {
 }
 
 model Player {
-  player_id         Int       @id @default(autoincrement())
-  first_name        String    @db.VarChar(50)
-  last_name         String    @db.VarChar(50)
-  username          String    @unique @db.VarChar(50)
-  email             String    @unique @db.VarChar(255)
-  password          String    @db.VarChar(255)
+  player_id  Int    @id @default(autoincrement())
+  first_name String @db.VarChar(50)
+  last_name  String @db.VarChar(50)
+  username   String @unique @db.VarChar(50)
+  email      String @unique @db.VarChar(255)
+  password   String @db.VarChar(255)
 }
- 
