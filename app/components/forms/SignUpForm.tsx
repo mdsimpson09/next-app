@@ -6,10 +6,9 @@ import { Button } from '@radix-ui/themes';
 import { Input } from "../ui/input";
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
+import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import GoogleSignInButton from '../ui/GoogleSignInButton';
-
-
 
 const FormSchema = z.object({
   email: z.string().min(2, 'Email is required').email('Invalid Email'),
@@ -23,8 +22,9 @@ const FormSchema = z.object({
   path: ['confirmPassword'],
   message: 'Passowords so not match'
 })
-const SignUpForm = () => {
 
+const SignUpForm = () => {
+  const router = useRouter 
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
     defaultValues: {
@@ -36,9 +36,28 @@ const SignUpForm = () => {
       confirmPassword:""
     },
   });
-  function onSubmit(values:z.infer<typeof FormSchema>) {
-    console.log(values);
+  async function onSubmit(values: z.infer<typeof FormSchema>) {
+    const response = await fetch("/api/players", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        first_name: values.first_name,
+        last_name: values.last_name,
+        username: values.username,
+        email: values.email,
+        password: values.password,
+      }),
+    });
+
+    if (response.ok) {
+      router().push("/login");
+    } else {
+      console.error("Registration failed");
+    }
   }
+
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)}>
