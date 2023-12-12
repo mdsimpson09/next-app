@@ -7,6 +7,7 @@ import { Input } from "../ui/input";
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 import Link from 'next/link';
+import GoogleSignInButton from '../ui/GoogleSignInButton';
 
 const FormSchema = z.object({
   email: z.string().min(2, 'Email is required').email('Invalid Email'),
@@ -65,6 +66,7 @@ const LogInForm = () => {
       <div className='mx-auto my-4 flex w-full items-center justify-evenly before:mr-4 before:block before:h-px before:flex-grow before:bg-stone-400 after:ml-4 after:bloack after:h-px after:flex-grow after:bg-stone-400'>
        or
       </div>
+      <GoogleSignInButton>Login with Google</GoogleSignInButton>
     <p className= "text-center text-sm text-gray-600 mt-2">
           If you don't have an account, please&nbsp; 
           <Link className='text-blue-500 hover:underline' href= '/sign-up'>Sign up</Link>.

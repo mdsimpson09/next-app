@@ -9,7 +9,7 @@ interface GoogleSignInButtonProps{
 const GoogleSignInButton: FC<GoogleSignInButtonProps>= ({ children }) => {
   const logInWithGoogle = () => console.log('Logging in with Google')
   return (
-  <Button onClick= {logInWithGoogle} className= "w-full mt-2 pb-1.5 bg-blue-500 hover:bg-blue-600 text-white">
+  <Button onClick= {logInWithGoogle} className= "w-full inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50">
     {children}
   </Button>
   )

@@ -1,6 +1,6 @@
 'use client'
 import React, { useState } from 'react';
-import SignupSubmit from '../app/components/SignupSubmit';
+import SignupSubmit from './SignupSubmit';
 
 const SignupForm = () => {
   const [formData, setFormData] = useState({

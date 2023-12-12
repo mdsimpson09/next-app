@@ -1,14 +1,17 @@
 'use client';
-import React { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { zodResolver } from "@hookform/resolvers/zod"
 import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from '../ui/form';
 import { Button } from '@radix-ui/themes';
 import { Input } from "../ui/input";
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
-import { useRouter } from 'next/navigation';
+import Router, { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import GoogleSignInButton from '../ui/GoogleSignInButton';
+
+
+
 
 const FormSchema = z.object({
   email: z.string().min(2, 'Email is required').email('Invalid Email'),
@@ -24,7 +27,9 @@ const FormSchema = z.object({
 })
 
 const SignUpForm = () => {
-  const router = useRouter 
+  const [isSubmitted, setIsSubmitted] = useState(false);
+  const router = useRouter();
+
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
     defaultValues: {
@@ -50,14 +55,11 @@ const SignUpForm = () => {
         password: values.password,
       }),
     })
-//double check this //
-if (response.ok) {
-  useEffect(() => {
-    router.push("/login");  
-  }, [response]);
-} else {
-  console.error("Registration failed"); 
-}
+    if(response.ok) {
+      setIsSubmitted(true);
+    } else {
+      console.error("Registration failed");
+    }
 
     // if (response.ok) {
     //   router().push("/home");
@@ -65,6 +67,11 @@ if (response.ok) {
     //   console.error("Registration failed");
     // }
   }
+  useEffect(() => {
+    if(isSubmitted) {
+      router.push("/login");
+    }
+  }, [isSubmitted]);
 
   return (
     <Form {...form}>
@@ -157,12 +164,11 @@ if (response.ok) {
         />
       </div>
         <Button className='w-full' type="submit">Register</Button>
-        <GoogleSignInButton>Sign-in with Google</GoogleSignInButton>
       </form>
       <div className='mx-auto my-4 flex w-full items-center justify-evenly before:mr-4 before:block before:h-px before:flex-grow before:bg-stone-400 after:ml-4 after:bloack after:h-px after:flex-grow after:bg-stone-400'>
        or
       </div>
-      
+       <GoogleSignInButton>Sign-in with Google</GoogleSignInButton>
     <p className= "text-center text-sm text-gray-600 mt-2">
           If you really don't want to sign up, you can return&nbsp; 
           <Link className='text-blue-500 hover:underline' href= '/'>Home</Link>.
