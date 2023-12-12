@@ -1,5 +1,5 @@
 'use client';
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { zodResolver } from "@hookform/resolvers/zod"
 import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from '../ui/form';
 import { Button } from '@radix-ui/themes';
@@ -7,7 +7,12 @@ import { Input } from "../ui/input";
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 import Link from 'next/link';
+import CredentialsProvider from "next-auth/providers/credentials";
 import GoogleSignInButton from '../ui/GoogleSignInButton';
+import { signIn } from 'next-auth/react';
+import { useRouter } from 'next/navigation';
+
+
 
 const FormSchema = z.object({
   email: z.string().min(2, 'Email is required').email('Invalid Email'),
@@ -15,6 +20,9 @@ const FormSchema = z.object({
 })
 
 const LogInForm = () => {
+  const [isSubmitted, setIsSubmitted] = useState(false);
+///////////////
+  const router = useRouter();
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
     defaultValues: {
@@ -23,8 +31,19 @@ const LogInForm = () => {
     },
   });
 
-  function onSubmit(values:z.infer<typeof FormSchema>) {
-    console.log(values);
+  async function onSubmit(values:z.infer<typeof FormSchema>) {
+    const signInData = await signIn('credentials',{
+      email: values.email, 
+      password: values.password,
+    });
+    if(signInData?.error){
+      console.log(signInData.error);
+    } 
+    useEffect(() => {
+      if(isSubmitted) {
+        router.push("/");
+      }
+    }, [isSubmitted]);
   }
 
   return (
