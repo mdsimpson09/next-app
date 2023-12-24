@@ -1,13 +1,41 @@
-"use client";
+
 import React from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { GiGamepad } from "react-icons/gi";
 import classnames from 'classnames'
+import { getServerSession } from 'next-auth';
+import { Button } from './components/ui/button'
 
+import { authOptions } from '@/lib/auth';
+import { signOut } from 'next-auth/react';
+import UserAccountNav from './components/UserAccountNav';
 
+const Navbar = async () =>{
+  const session = await getServerSession(authOptions);
+  return (
+    <div className=' bg-zinc-100 py-2 border-b border-s-zinc-200 fixed w-full z-10 top-0'>
+      <div className='container flex items-center justify-between'>
+        <Link href='/'>
+          <GiGamepad />
+        </Link>
+        <Link href='/'> Home </Link>
+        <Link href='/sign-up'> Sign Up </Link>
+        <Link href='/about'> About </Link>
+        <Link href='/faqs'> FAQs </Link>
+    {session?.user ? ( <UserAccountNav /> ) : 
+      (
+         <Button> <Link  href='/login'> Login </Link> </Button>
+    )}
+      </div>
+      </div>
+  );
+};
 
-const NavBar = () => {
+export default Navbar;
+{/* 
+async function NavBar() {
+    const session = await getServerSession(authOptions);
     const currentPath = usePathname();
     console.log(currentPath);
     const links= [
@@ -17,9 +45,9 @@ const NavBar = () => {
         // { label: 'Meet', href: '/' },
         // { label: 'Matches', href: '/' },
         // { label: 'Chat', href: '/' },
-        { label: 'Login', href: '/login' },
         { label: 'Signup', href: '/sign-up' },
         { label: 'FAQs', href: '/faqs' },
+        { label: 'Login', href: '/login' },
     ]
   return (
     <div className= 'container'>
@@ -43,29 +71,4 @@ const NavBar = () => {
   )
 }
 
-export default NavBar
-
-// const NavBar = () => {
-//   return (
-//     <div className='bg-zinc-100 py-2 border-b border-s-zinc 200 fixed w-full z-16 top-0'>
-//         <div className='container flex items-center justify-between bottom-2'>
-//             <Link href='/'><GiGamepad /></Link>
-//             <Link className= {buttonVariants()} href='/'>Home</Link>
-//             <Link href='/about'>About</Link>
-//             <Link href='/about'>Profile</Link>
-//             <Link href='/about'>Meet</Link>
-//             <Link href='/about'>Matches</Link>
-//             <Link href='/about'>Chat</Link>
-//             <Link href='/about'>Login</Link>
-//             <Link href='/about'>Signup</Link>
-//             <Link href='/faqs'>FAQs</Link>
-
-
-        
-//     </div>
-//     </div>
-    
-//     );
-// };
-
-// export default NavBar; 
+export default NavBar */}

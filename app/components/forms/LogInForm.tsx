@@ -108,6 +108,8 @@ import CredentialsProvider from "next-auth/providers/credentials";
 import GoogleSignInButton from '../ui/GoogleSignInButton';
 import { signIn } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
+import { useToast } from "@/components/ui/use-toast"
+
 
 
 
@@ -120,6 +122,7 @@ const LogInForm = () => {
   // const [isSubmitted, setIsSubmitted] = useState(false);
 ///////////////
   const router = useRouter();
+  const { toast } = useToast()
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
     defaultValues: {
@@ -137,11 +140,17 @@ const LogInForm = () => {
     console.log(signInData);
 
     if(signInData?.error){
-      console.log(signInData.error);
+      toast({
+        title: "Error",
+        description: "Oops! Something went wrong!",
+        variant: "destructive",
+      })      
       return;
     } 
     else {
-        router.push('/about');
+        
+        router.push('/admin');
+        router.refresh()
     }
    
 

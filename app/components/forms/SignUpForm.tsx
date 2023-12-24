@@ -9,6 +9,7 @@ import { z } from 'zod';
 import Router, { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import GoogleSignInButton from '../ui/GoogleSignInButton';
+import { toast, useToast } from '@/components/ui/use-toast';
 
 
 
@@ -29,6 +30,7 @@ const FormSchema = z.object({
 const SignUpForm = () => {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const router = useRouter();
+  const { toast } = useToast();
 
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
@@ -58,7 +60,11 @@ const SignUpForm = () => {
     if(response.ok) {
       setIsSubmitted(true);
     } else {
-      console.error("Registration failed");
+      toast({
+        title: "Error",
+        description: "Oops! Something went wrong!",
+        variant: "destructive",
+      })      
     }
 
     // if (response.ok) {
