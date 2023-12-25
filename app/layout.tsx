@@ -28,7 +28,7 @@ export default function RootLayout({
         <Theme>
         <NavBar />
         
-        <main className= 'h-screen flex flex-col justify-center items-center'>{children}</main>
+        <main className= 'mt-16 h-screen flex flex-col justify-center items-center'>{children}</main>
         <Toaster />
         </Theme>
         </Provider>

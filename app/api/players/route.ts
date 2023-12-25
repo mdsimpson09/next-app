@@ -15,6 +15,7 @@ const playerSchema = z.object({
     password: z.string().min(1, 'Passowrd is required').min(8, 'Password must have 8 characters'),
     username: z.string().min(1, 'Username is required').min(8),
     
+    
   })
 
 
@@ -60,39 +61,3 @@ export async function POST(req: Request) {
 
  }
 }
-
-
-
-
-
-// const createPlayerSchema = z.object({
-//   username: z.string().min(5).max(30),
-//   first_name: z.string().min(2).max(30),
-//   last_name: z.string().min(2).max(30),
-//   email: z.string().email().min(2).max(30),
-//   password: z.string().min(8).max(30)
-
-// })
-
-
-
-// export async function POST(request: NextRequest) {
-    
-//     const body = await request.json();
-//     const validation = createPlayerSchema.safeParse(body);
-//     if (!validation.success) {
-//         return NextResponse.json(validation.error.errors, {status:400})
-//     }
-//     const newPlayer = await prisma.player.create({
-//         data: {
-//             username: body.username,
-//             first_name: body.first_name,
-//             last_name: body.last_name,
-//             email: body.email,
-//             password: body.password
-//         }
-//     })
-//     // TODO: Create player in database
-//    return NextResponse.json({newPlayer, message: 'Player created successfully'})
-// }
-

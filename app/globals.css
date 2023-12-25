@@ -74,3 +74,9 @@
     @apply bg-background text-foreground;
   }
 }
+
+@responsive {
+  body {
+    @apply p-0.5; /* Add padding to the body for better readability */
+  }
+}

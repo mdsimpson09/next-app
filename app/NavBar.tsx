@@ -6,7 +6,6 @@ import { GiGamepad } from "react-icons/gi";
 import classnames from 'classnames'
 import { getServerSession } from 'next-auth';
 import { Button } from './components/ui/button'
-
 import { authOptions } from '@/lib/auth';
 import { signOut } from 'next-auth/react';
 import UserAccountNav from './components/UserAccountNav';
@@ -17,12 +16,15 @@ const Navbar = async () =>{
     <div className=' bg-zinc-100 py-2 border-b border-s-zinc-200 fixed w-full z-10 top-0'>
       <div className='container flex items-center justify-between'>
         <Link href='/'>
-          <GiGamepad />
+          <img src= "/logo.png" alt="logo" className='h-20 w-20' />
         </Link>
         <Link href='/'> Home </Link>
-        <Link href='/sign-up'> Sign Up </Link>
+        <Link href='/player'> Profile </Link>
         <Link href='/about'> About </Link>
         <Link href='/faqs'> FAQs </Link>
+        <Link href='/edit'> Edit Profile </Link>
+        <Link href='/sign-up'> Sign Up </Link>
+       
     {session?.user ? ( <UserAccountNav /> ) : 
       (
          <Button> <Link  href='/login'> Login </Link> </Button>
