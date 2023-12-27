@@ -97,6 +97,8 @@
 
 'use client';
 import React, { useEffect, useState } from 'react'
+import { NextRequest, NextResponse } from 'next/server';
+
 import { zodResolver } from "@hookform/resolvers/zod"
 import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from '../ui/form';
 import { Button } from '@radix-ui/themes';
@@ -109,6 +111,7 @@ import GoogleSignInButton from '../ui/GoogleSignInButton';
 import { signIn } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
 import { useToast } from "@/components/ui/use-toast"
+import { useSession } from "next-auth/react"
 
 
 
@@ -121,6 +124,8 @@ const FormSchema = z.object({
 const LogInForm = () => {
   // const [isSubmitted, setIsSubmitted] = useState(false);
 ///////////////
+  
+
   const router = useRouter();
   const { toast } = useToast()
   const form = useForm<z.infer<typeof FormSchema>>({
@@ -137,6 +142,7 @@ const LogInForm = () => {
       password: values.password,
       redirect:false,
     });
+    //////sign in information console ///////
     console.log(signInData);
 
     if(signInData?.error){
@@ -148,12 +154,10 @@ const LogInForm = () => {
       return;
     } 
     else {
-        
+       
         router.push('/admin');
         router.refresh()
     }
-   
-
   }
 
   return (
@@ -203,7 +207,4 @@ const LogInForm = () => {
     </Form>
   );
 };
-
 export default LogInForm
-
-

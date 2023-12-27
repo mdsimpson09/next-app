@@ -15,9 +15,10 @@ import { toast, useToast } from '@/components/ui/use-toast';
 const FormSchema = z.object({
   //   first_name: z.string().min(2),
   //   last_name: z.string().min(2),
-  bio: z.string(),
-  looking_for: z.string(),
-  image: z.string(),
+  username: z.string().min(2).or(z.string().optional()),
+  bio: z.string().optional(),
+  looking_for: z.string().optional(),
+  image: z.string().optional()
 });
 
 
@@ -31,19 +32,21 @@ const EditForm = () => {
     defaultValues: {
     //   first_name:"",
     //   last_name: "",
+      // username: "",
       bio:"",
       looking_for:"",
-      image:""
+      // image:""
      
     },
   });
   async function onSubmit(values: z.infer<typeof FormSchema>) {
-    const response = await fetch("/api/players", {
-      method: "POST",
+    const response = await fetch("/api/edit", {
+      method: "PUT",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
+        // username:values.username,
         bio: values.bio,
         looking_for: values.looking_for,
         image: values.image
@@ -76,7 +79,7 @@ const EditForm = () => {
       <form onSubmit={form.handleSubmit(onSubmit)}>
        <div>
       
-              <FormField
+        <FormField
           control={form.control}
           name="bio"
           render={({ field }) => (
@@ -113,7 +116,7 @@ const EditForm = () => {
             <FormItem>
               <FormLabel>Update your photo:</FormLabel>
               <FormControl>
-                <input className= 'rounded-sm flex w-full items-center justify-evenly' placeholder="Photo URL" type='text'{...field} />
+                <input className= 'rounded-sm flex w-full items-center justify-evenly' placeholder="Photo URL" type='URL'{...field} />
               </FormControl>
               <FormMessage />
             </FormItem>

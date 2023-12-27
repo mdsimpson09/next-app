@@ -6,7 +6,7 @@ import { Inter } from 'next/font/google'
 import { Theme } from '@radix-ui/themes'
 import NavBar from './NavBar'
 import { Toaster } from '@/components/ui/toaster';
-import Provider from './Provider';
+import SessionProvider from './Provider';
 
 
 const inter = Inter({ subsets: ['latin'] })
@@ -24,14 +24,14 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <Provider>
+        <SessionProvider>
         <Theme>
         <NavBar />
         
         <main className= 'mt-16 h-screen flex flex-col justify-center items-center'>{children}</main>
         <Toaster />
         </Theme>
-        </Provider>
+        </SessionProvider>
         </body>
     </html>
   )
