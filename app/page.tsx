@@ -15,7 +15,7 @@ export default async function Home() {
       <h1 className='flex flex-col justify-center items-center text-4xl'>Hello! Welcome to Gamer Date!</h1>
       <div className='flex flex-col justify-center items-center'>
 
-      <Button ><Link href="/admin">View Profile</Link></Button>
+      <Button ><Link href="/profile">View Profile</Link></Button>
 
       {/* <h2>Client Session</h2>
       <User />
