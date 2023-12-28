@@ -19,7 +19,7 @@ const Navbar = async () =>{
           <img src= "/logo.png" alt="logo" className='h-20 w-20' />
         </Link>
         <Link href='/'> Home </Link>
-        <Link href='/player'> Profile </Link>
+        <Link href='/profile'> Profile </Link>
         <Link href='/about'> About </Link>
         <Link href='/faqs'> FAQs </Link>
         <Link href='/edit'> Edit Profile </Link>

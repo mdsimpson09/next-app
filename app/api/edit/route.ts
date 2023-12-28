@@ -25,7 +25,9 @@ export async function PUT(req: Request) {
   try{
     const session = await getServerSession(authOptions);
     console.log('Session:', session);
+
     if (!session?.user) {
+      console.log('No session');
         return NextResponse.json(
           { message: 'Authentication required' },
           { status: 401 }

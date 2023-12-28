@@ -44,7 +44,7 @@ const SignUpForm = () => {
     },
   });
   async function onSubmit(values: z.infer<typeof FormSchema>) {
-    const response = await fetch("/api/players", {
+    const response = await fetch("/api/create", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

@@ -20,6 +20,7 @@ import EditForm from '@/app/components/forms/EditForm';
 import { getServerSession } from 'next-auth';
 // import { authOptions } from "../../../lib/auth";
 import { authOptions } from "@/lib/auth";
+import Link from 'next/link';
 
  async function edit(){
   const session = await getServerSession(authOptions);
@@ -32,7 +33,7 @@ import { authOptions } from "@/lib/auth";
         </div>
   )}
   return (
-    <h2>Please login to see and edit your profile page </h2>
+    <h2>Please <Link className='text-blue-500 hover:underline' href= '/login'> login </Link>  to see and edit your profile page </h2>
   )
 }
 export default edit;

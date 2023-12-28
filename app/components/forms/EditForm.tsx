@@ -70,7 +70,7 @@ const EditForm = () => {
   }
   useEffect(() => {
     if(isSubmitted) {
-      router.push("/player");
+      router.push("/profile");
     }
   }, [isSubmitted]);
 
