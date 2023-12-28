@@ -20,6 +20,7 @@ const Navbar = async () =>{
         </Link>
         <Link href='/'> Home </Link>
         <Link href='/profile'> Profile </Link>
+        <Link href='/meet'> Find Players </Link>
         <Link href='/about'> About </Link>
         <Link href='/faqs'> FAQs </Link>
         <Link href='/edit'> Edit Profile </Link>

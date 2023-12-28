@@ -23,12 +23,13 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      {/* <body className={inter.className}> */}
+      <body className="justify-center items-center h-screen pt-36">
         <SessionProvider>
         <Theme>
         <NavBar />
         
-        //background//
+   
         <main className= 'mt-8 h-auto flex flex-col justify-center items-center'>{children}</main>
         <Toaster />
         </Theme>
