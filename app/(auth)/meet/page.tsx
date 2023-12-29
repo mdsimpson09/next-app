@@ -5,7 +5,7 @@ import { getServerSession } from 'next-auth';
 import { authOptions } from "@/lib/auth";
 import Link from 'next/link';
 import Footer from "@/app/components/ui/footer";
-import Header from "@/app/components/ui/Header";
+
 
 async function MeetPage() {
     const session = await getServerSession(authOptions);
@@ -14,7 +14,7 @@ async function MeetPage() {
     if (session?.user) {
   return (
     <div >
-    <Header />
+  
       <Meet />
       <Footer />
       

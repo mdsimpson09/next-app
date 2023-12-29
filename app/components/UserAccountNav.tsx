@@ -6,7 +6,7 @@ import { redirect } from 'next/navigation'
 
 function UserAccountNav() {
   return (
-    <Button onClick= {()=> signOut({
+    <Button className='outline' onClick= {()=> signOut({
         redirect: true,
         callbackUrl: `${window.location.origin}/login`
         

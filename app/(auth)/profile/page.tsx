@@ -14,9 +14,8 @@ async function ProfilePage() {
     if (session?.user) {
   return (
     <div >
-    <Header />
+
       <Profile />
-      <Footer />
       
     </div>
   )}

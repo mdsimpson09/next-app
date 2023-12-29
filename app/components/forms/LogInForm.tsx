@@ -155,7 +155,7 @@ const LogInForm = () => {
     } 
     else {
        
-        router.push('/admin');
+        router.push('/main');
         router.refresh()
     }
   }

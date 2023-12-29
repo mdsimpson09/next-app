@@ -8,7 +8,7 @@ interface LayoutProps {
 
 const Layout: FC<LayoutProps> = ({ children }) => {
   return (
-    <div className= 'bg-slate-200 p-20 rounded-xl'>
+    <div className= 'bg-indigo-200 p-20 rounded-xl'>
      {children}
     </div>
   )
