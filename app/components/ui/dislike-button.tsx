@@ -8,7 +8,7 @@ import TinderCard from'react-tinder-card'
 
 
 interface DislikeButtonProps {
-    playerIdToDislike: number | null;
+    playerIdToDislike: number;
   }
   const DislikeButton: React.FC<DislikeButtonProps> = ({ playerIdToDislike }) => {
     const router = useRouter();
