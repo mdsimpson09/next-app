@@ -82,3 +82,30 @@ console.log("Random Player:", randomPlayer);
     return NextResponse.json({ message: 'Something went wrong :(' }, { status: 500 });
   }
 }
+
+
+
+// ////excluding disliked players 
+
+// const randomOffset = Math.floor(Math.random() * totalPlayers);
+
+// // Fetch the player at the random offset, excluding disliked players
+// const randomPlayer = await prisma.player.findFirst({
+//   where: {
+//     username: { not: currentPlayerUsername },
+//     NOT: {
+//       dislikedPlayers: { some: { disliked_player_id: session?.user?.id } }, // Exclude disliked players
+//     },
+//   },
+//   select: {
+//     first_name: true,
+//     username: true,
+//     bio: true,
+//     looking_for: true,
+//     image: true,
+//   },
+//   take: 1,
+//   skip: randomOffset,
+// });
+
+// // ...

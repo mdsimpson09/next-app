@@ -11,17 +11,68 @@ datasource db {
 }
 
 model Player {
-  player_id     Int       @id @default(autoincrement())
-  first_name    String?   @db.VarChar(50)
-  last_name     String?   @db.VarChar(50)
-  username      String?   @unique @db.VarChar(50)
-  email         String?   @unique @db.VarChar(255)
-  password      String    @db.VarChar(255)
-  bio           String?   @db.VarChar(500)
-  looking_for   String?   @db.VarChar(500)
-  image         String?
-  accounts      Account[]
-  sessions      Session[]
+  player_id   Int       @id @default(autoincrement())
+  first_name  String?   @db.VarChar(50)
+  last_name   String?   @db.VarChar(50)
+  username    String?   @unique @db.VarChar(50)
+  email       String?   @unique @db.VarChar(255)
+  password    String    @db.VarChar(255)
+  bio         String?   @db.VarChar(500)
+  looking_for String?   @db.VarChar(500)
+  image       String?
+  accounts    Account[]
+  sessions    Session[]
+
+  dislikedPlayers          DislikedProfile[] @relation("dislikedprofiles_disliked_player_idToplayer")
+  dislikingPlayers         DislikedProfile[] @relation("dislikedprofiles_player_idToplayer")
+  likedPlayers             LikedProfile[]    @relation("likedprofiles_liked_player_idToplayer")
+  likingPlayers            LikedProfile[]    @relation("likedprofiles_player_idToplayer")
+  matchedProfilesAsPlayer1 MatchedProfile[]  @relation("matchedprofiles_player_id_1Toplayer")
+  matchedProfilesAsPlayer2 MatchedProfile[]  @relation("matchedprofiles_player_id_2Toplayer")
+}
+
+model DislikedProfile {
+  player_id          Int
+  disliked_player_id Int
+  player             Player @relation("dislikedprofiles_disliked_player_idToplayer", fields: [disliked_player_id], references: [player_id], onDelete: NoAction, onUpdate: NoAction)
+  dislikedPlayer     Player @relation("dislikedprofiles_player_idToplayer", fields: [player_id], references: [player_id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@id([player_id, disliked_player_id])
+}
+
+model LikedProfile {
+  player_id       Int
+  liked_player_id Int
+  player          Player @relation("likedprofiles_liked_player_idToplayer", fields: [liked_player_id], references: [player_id], onDelete: NoAction, onUpdate: NoAction)
+  likedPlayer     Player @relation("likedprofiles_player_idToplayer", fields: [player_id], references: [player_id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@id([player_id, liked_player_id])
+}
+
+model MatchedProfile {
+  player_id_1 Int
+  player_id_2 Int
+  player1     Player @relation("matchedprofiles_player_id_1Toplayer", fields: [player_id_1], references: [player_id], onDelete: NoAction, onUpdate: NoAction)
+  player2     Player @relation("matchedprofiles_player_id_2Toplayer", fields: [player_id_2], references: [player_id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@id([player_id_1, player_id_2])
+}
+
+model Session {
+  id           String   @id @default(cuid())
+  sessionToken String   @unique
+  player_Id    Int
+  expires      DateTime
+
+  player Player @relation(fields: [player_Id], references: [player_id], onDelete: Cascade)
+}
+
+model VerificationToken {
+  identifier String
+  token      String   @unique
+  expires    DateTime
+
+  @@unique([identifier, token])
 }
 
 model Account {
@@ -41,21 +92,4 @@ model Account {
   player Player @relation(fields: [player_Id], references: [player_id], onDelete: Cascade)
 
   @@unique([provider, providerAccountId])
-}
-
-model Session {
-  id           String   @id @default(cuid())
-  sessionToken String   @unique
-  player_Id    Int
-  expires      DateTime
-
-  player Player @relation(fields: [player_Id], references: [player_id], onDelete: Cascade)
-}
-
-model VerificationToken {
-  identifier String
-  token      String   @unique
-  expires    DateTime
-
-  @@unique([identifier, token])
 }
