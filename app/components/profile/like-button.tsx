@@ -1,11 +1,11 @@
 'use client'
 import React, { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation';
-
 import HateIcon from '@mui/icons-material/CloseOutlined';
 import { IconButton } from '@mui/material';
 import TinderCard from'react-tinder-card'
 import { HeartIcon } from 'lucide-react';
+
 
 
 interface LikeButtonProps {
@@ -42,8 +42,10 @@ interface LikeButtonProps {
         if (response.ok) {
           // Handle success (e.g., update UI or perform other actions)
           console.log('the like button is working like-button.tsx');
+          router.push('/meet').then(() => console.log('Navigation success')).catch(err => console.error('Navigation error:', err));
 
-          router.refresh(); 
+            
+          
         } else {
             const errorData = await response.json();
           console.error('like request failed', errorData.message);

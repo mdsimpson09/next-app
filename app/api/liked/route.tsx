@@ -3,6 +3,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { PrismaClient } from '@prisma/client';
 import { getServerSession } from 'next-auth';
 import { authOptions } from '@/lib/auth';
+import Router from 'next/router';
 
 const prisma = new PrismaClient();
 
@@ -54,7 +55,7 @@ export async function POST(req: NextRequest) {
       },
     });
 
-    return NextResponse.json({ message: "Player liked successfully route.tsx" });
+    return NextResponse.json({ message: "Player liked successfully route.tsx" }) 
   } catch (error) {
     console.error("Error:", error);
     return NextResponse.json({ message: "Something went wrong" });

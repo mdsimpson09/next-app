@@ -1,6 +1,9 @@
 'use client';
 import React, { useEffect, useState } from 'react';
 
+import Link from 'next/link';
+import { Button } from '@radix-ui/themes';
+
 interface ProfileProps {
   player: {
     first_name: string | null;
@@ -62,6 +65,7 @@ const Profile: React.FC<ProfileProps> = ({ player }) => {
         <p className="text-gray-700 font-bold capitalize"> I'm looking for:</p>
         <p className="text-gray-700">{profileData.looking_for || ""}</p>
       </div>
+      <Button><Link href="/edit">Edit Profile</Link></Button>
     </div>
   );
 };
