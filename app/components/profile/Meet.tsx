@@ -1,5 +1,7 @@
 'use client';
 import React, { useEffect, useState } from 'react';
+import MeetUI from './MeetUI';
+import MeetControls from './MeetControls';
 
 
 interface MeetProps {
@@ -47,22 +49,9 @@ const Meet: React.FC<MeetProps> = ({ player }) => {
 
   return (
     <div>
-      
-      <div className=" max-3 py-6 p-6 bg-white shadow-md rounded-md my-8">
-        <img
-          src={profileData.image || '/profile-image.jpg'} // Use the profile image from API if available, fallback to a default image
-          alt="Profile"
-          className="w-full h-64 object-cover rounded-md mb-4"
-        />
-        <h1 className="text-2xl font-semibold mb-2 capitalize">{profileData.first_name || ''}</h1>
-        <p className="text-gray-500 mb-4">{profileData.username || ''}</p>
-        <p className="text-gray-700 font-bold capitalize"> about me: </p>
-        <p>  {profileData.bio || ''}</p>
-        <br></br>
-        <p className="text-gray-700 font-bold capitalize"> I'm looking for:</p>
-        <p className="text-gray-700">{profileData.looking_for || ''}</p>
-      
-      </div>
+        
+      <MeetUI player={profileData} />
+      <MeetControls player={profileData} />
     </div>
   );
 };

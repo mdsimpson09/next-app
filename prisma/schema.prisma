@@ -34,7 +34,9 @@ model Player {
 model DislikedProfile {
   player_id          Int
   disliked_player_id Int
+
   player             Player @relation("dislikedprofiles_disliked_player_idToplayer", fields: [disliked_player_id], references: [player_id], onDelete: NoAction, onUpdate: NoAction)
+
   dislikedPlayer     Player @relation("dislikedprofiles_player_idToplayer", fields: [player_id], references: [player_id], onDelete: NoAction, onUpdate: NoAction)
 
   @@id([player_id, disliked_player_id])
@@ -43,7 +45,9 @@ model DislikedProfile {
 model LikedProfile {
   player_id       Int
   liked_player_id Int
+
   player          Player @relation("likedprofiles_liked_player_idToplayer", fields: [liked_player_id], references: [player_id], onDelete: NoAction, onUpdate: NoAction)
+  
   likedPlayer     Player @relation("likedprofiles_player_idToplayer", fields: [player_id], references: [player_id], onDelete: NoAction, onUpdate: NoAction)
 
   @@id([player_id, liked_player_id])

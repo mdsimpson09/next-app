@@ -1,49 +1,3 @@
-
-// import React, { useState } from 'react';
-
-// interface ProfileProps {
-//   player: {
-//     first_name: string | null;
-//     username: string | null;
-//     bio: string | null;
-//     looking_for: string | null;
-//     image: string | null;
-//   } | null;
-// }
-
-// const Profile: React.FC<ProfileProps> = ({ player }) =>{
-//   const [profileData, setProfileData] = useState<ProfileProps['player']>(player);
-  
-//   if (!player) {
-//     return (
-//       <div className="flex flex-col items-center justify-center h-screen">
-//         <p>Whoops! Something went wrong.</p>
-//       </div>
-//     );
-//   }
-
-//   return (
-//     <div className="flex flex-col items-center justify-center h-screen">
-//       <div className="max-w-md p-4 bg-white shadow-md rounded-md">
-//         <img
-//           src="/profile-image.jpg" // Add your profile image path
-//           alt="Profile"
-//           className="w-full h-64 object-cover rounded-md mb-4"
-//         />
-//         <h1 className="text-2xl font-semibold mb-2">{player.first_name}</h1>
-//         <p className="text-gray-500 mb-4">{player.username}</p>
-//         <p className="text-gray-700">
-//         {player.bio}
-//         </p>
-//         <p className="text-gray-700">{player.looking_for}</p>
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default Profile;
-
-
 'use client';
 import React, { useEffect, useState } from 'react';
 
@@ -54,32 +8,33 @@ interface ProfileProps {
     bio: string | null;
     looking_for: string | null;
     image: string | null;
-  } | null;
+    player_id: number;
+  };
 }
 
 const Profile: React.FC<ProfileProps> = ({ player }) => {
-  const [profileData, setProfileData] = useState<ProfileProps['player']>(player);
+  const [profileData, setProfileData] =
+    useState<ProfileProps["player"]>(player);
 
   useEffect(() => {
-    const apiUrl = "/api/profile"; // Adjust the URL as needed
+    const apiUrl = "/api/profile";
 
-    // Make the API request
     fetch(apiUrl)
       .then((response) => {
         if (!response.ok) {
-          throw new Error('Network response was not ok');
+          throw new Error("Network response was not ok");
         }
         return response.json();
       })
       .then((data) => {
-
-        setProfileData(data.player);
+        if (data.player) {
+          setProfileData(data.player);
+        }
       })
       .catch((error) => {
-        console.error('Error fetching profile data:', error);
-        setProfileData(null);
+        console.error("Error fetching profile data:", error);
       });
-  }, []); 
+  }, []);
 
   if (!profileData) {
     return (
@@ -93,17 +48,19 @@ const Profile: React.FC<ProfileProps> = ({ player }) => {
     <div>
       <div className="min-w-6 max-3 py-6 p-6 bg-white shadow-md rounded-md my-8">
         <img
-          src={profileData.image || '/profile-image.jpg'} // Use the profile image from API if available, fallback to a default image
+          src={profileData.image || "/profile-image.jpg"}
           alt="Profile"
           className="w-full h-64 object-cover rounded-md mb-4"
         />
-           <h1 className="text-2xl font-semibold mb-2 capitalize">{profileData.first_name || ''}</h1>
-        <p className="text-gray-500 mb-4">{profileData.username || ''}</p>
+        <h1 className="text-2xl font-semibold mb-2 capitalize">
+          {profileData.first_name || ""}
+        </h1>
+        <p className="text-gray-500 mb-4">{profileData.username || ""}</p>
         <p className="text-gray-700 font-bold capitalize"> about me: </p>
-        <p>  {profileData.bio || ''}</p>
+        <p> {profileData.bio || ""}</p>
         <br></br>
         <p className="text-gray-700 font-bold capitalize"> I'm looking for:</p>
-        <p className="text-gray-700">{profileData.looking_for || ''}</p>
+        <p className="text-gray-700">{profileData.looking_for || ""}</p>
       </div>
     </div>
   );

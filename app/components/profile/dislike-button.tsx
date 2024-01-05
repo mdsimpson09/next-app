@@ -8,7 +8,7 @@ import TinderCard from'react-tinder-card'
 
 
 interface DislikeButtonProps {
-    playerIdToDislike: number;
+    playerIdToDislike: number | null;
   }
   const DislikeButton: React.FC<DislikeButtonProps> = ({ playerIdToDislike }) => {
     const router = useRouter();
@@ -22,7 +22,9 @@ interface DislikeButtonProps {
   
       try {
         // Send the dislike request with the player ID to dislike
-        const response = await fetch('/api/dislike', {
+        const response = await fetch('/api/disliked', 
+        {
+
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -31,10 +33,14 @@ interface DislikeButtonProps {
             disliked_player_id: playerIdToDislike
           }),
         });
-  
+
+        const data = await response.json();
+        console.log(data.message);
+
+     // Handle response
         if (response.ok) {
           // Handle success (e.g., update UI or perform other actions)
-          console.log('Disliked successfully');
+          console.log('the button is working dislike-button.tsx');
 
           router.refresh(); 
         } else {
@@ -49,14 +55,13 @@ interface DislikeButtonProps {
   
     return (
       <div>
-        <TinderCard className="container flex items-center justify-between space-x-4">
+      
           <IconButton
-            onClick={handleDislike}
-            className="w-24 h-24 bg-red-500 rounded-full text-white font-bold hover:bg-red-600 focus:outline-none focus:ring focus:ring-green-400 shadow-md"
-          >
+            className="w-24 h-24 bg-red-200 rounded-full text-white font-bold hover:bg-red-600 focus:outline-none focus:ring focus:ring-green-400 shadow-md"
+            onClick={handleDislike} >
             <HateIcon className="text-6xl" />
           </IconButton>
-        </TinderCard>
+       
       </div>
     );
   };

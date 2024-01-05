@@ -22,39 +22,39 @@ export async function POST(req: NextRequest) {
     const currentPlayerId = Number(session.user.id);
 
     const body = await req.json();
-    const { disliked_player_id } = body;
-    const dislikedPlayerId = Number(disliked_player_id);
+    const { liked_player_id } = body;
+    const likedPlayerId = Number(liked_player_id);
 
     // Check if the player is trying to dislike themselves
-    if (disliked_player_id === currentPlayerId) {
-      return NextResponse.json({ message: "You cannot dislike yourself" });
+    if (liked_player_id === currentPlayerId) {
+      return NextResponse.json({ message: "You cannot like yourself" });
     }
 
     // Check if the dislike relationship already exists
-    const existingDislike = await prisma.dislikedProfile.findUnique({
+    const existingDislike = await prisma.likedProfile.findUnique({
       where: {
-        player_id_disliked_player_id: {
+        player_id_liked_player_id: {
           player_id: currentPlayerId,
-          disliked_player_id: disliked_player_id,
+          liked_player_id: liked_player_id,
         },
       },
     });
 
     if (existingDislike) {
       return NextResponse.json({
-        message: "You have already disliked this player",
+        message: "You have already liked this player",
       });
     }
 
     // Create the dislike relationship
-    await prisma.dislikedProfile.create({
+    await prisma.likedProfile.create({
       data: {
         player_id: currentPlayerId,
-        disliked_player_id,
+        liked_player_id,
       },
     });
 
-    return NextResponse.json({ message: "Player disliked successfully" });
+    return NextResponse.json({ message: "Player liked successfully route.tsx" });
   } catch (error) {
     console.error("Error:", error);
     return NextResponse.json({ message: "Something went wrong" });

@@ -24,7 +24,7 @@ export async function PUT(req: Request) {
 
   try{
     const session = await getServerSession(authOptions);
-    console.log('Session:', session);
+    // console.log('Session:', session);
 
     if (!session?.user) {
       console.log('No session');
