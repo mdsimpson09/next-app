@@ -23,7 +23,7 @@ const Navbar = async () =>{
         <Link href='/meet'> Find Players </Link>
         <Link href='/about'> About </Link>
         <Link href='/faqs'> FAQs </Link>
-        <Link href='/edit'> Edit Profile </Link>
+        <Link href='/matches'> Your Matches </Link>
         <Link href='/sign-up'> Sign Up </Link>
        
     {session?.user ? ( <UserAccountNav /> ) : 

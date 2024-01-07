@@ -42,7 +42,8 @@ interface LikeButtonProps {
         if (response.ok) {
           // Handle success (e.g., update UI or perform other actions)
           console.log('the like button is working like-button.tsx');
-          router.push('/meet').then(() => console.log('Navigation success')).catch(err => console.error('Navigation error:', err));
+          router.push('/meet')
+       
 
             
           
