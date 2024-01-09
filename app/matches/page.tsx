@@ -1,5 +1,5 @@
 import React from 'react'
-import Match from '@/app/components/profile/matching';
+import MatchingPage from '@/app/components/profile/matching';
 import { getServerSession } from 'next-auth';
 // import { authOptions } from "../../../lib/auth";
 import { authOptions } from "@/lib/auth";
@@ -14,7 +14,7 @@ async function MatchPage() {
   return (
     <div >
   
-      <Match />
+      <MatchingPage />
       
     </div>
   )}
