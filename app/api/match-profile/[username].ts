@@ -1,20 +1,18 @@
+//app/api/match-profile.ts/[username].ts
 import { NextRequest, NextResponse } from 'next/server';
 import { PrismaClient } from '@prisma/client';
-import { getSession, useSession } from 'next-auth/react';
-import * as z from 'zod';
-import { authOptions } from '@/lib/auth';
 import { getServerSession } from 'next-auth';
+import { authOptions } from '@/lib/auth';
 
 const prisma = new PrismaClient();
 
 export async function GET(req: NextRequest) {
-
   try {
-   const session = await getServerSession(authOptions);
+    const session = await getServerSession(authOptions);
     // console.log('Session:', session);
 
-    if (!session?.user) {
-        console.log('No session');
+    if (!session?.user?.username) {
+      console.log('No session or username');
       return NextResponse.json(
         { message: 'Authentication required' },
         { status: 401 }
@@ -40,6 +38,7 @@ export async function GET(req: NextRequest) {
 
     return NextResponse.json({ player }, { status: 200 });
   } catch (error) {
+    console.error('Error:', error);
     return NextResponse.json({ message: 'Something went wrong :(' }, { status: 500 });
   }
 }

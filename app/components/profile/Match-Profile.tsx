@@ -16,12 +16,12 @@ interface ProfileProps {
   };
 }
 
-const Profile: React.FC<ProfileProps> = ({ player }) => {
+const MatchProfile: React.FC<ProfileProps> = ({ player }) => {
   const [profileData, setProfileData] =
     useState<ProfileProps["player"]>(player);
 
   useEffect(() => {
-    const apiUrl = "/api/profile";
+    const apiUrl = "/api/match-profile";
 
     fetch(apiUrl)
       .then((response) => {
@@ -71,13 +71,5 @@ const Profile: React.FC<ProfileProps> = ({ player }) => {
   );
 };
 
-export default Profile;
-
-
-
-
-
-
-
-
+export default MatchProfile;
 

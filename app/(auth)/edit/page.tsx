@@ -24,7 +24,7 @@ import Link from 'next/link';
 
  async function edit(){
   const session = await getServerSession(authOptions);
-  console.log(session);
+  // console.log(session);
 
     if (session?.user) {
       return (

@@ -18,12 +18,12 @@ const Navbar = async () =>{
         <Link href='/'>
           <img src= "/logo.png" alt="logo" className='h-20 w-20' />
         </Link>
-        <Link href='/'> Home </Link>
+        {/* <Link href='/'> Home </Link> */}
+        <Link href='/about'> About </Link>
         <Link href='/profile'> Profile </Link>
         <Link href='/meet'> Find Players </Link>
-        <Link href='/about'> About </Link>
-        <Link href='/faqs'> FAQs </Link>
         <Link href='/matches'> Your Matches </Link>
+        <Link href='/faqs'> FAQs </Link>
         <Link href='/sign-up'> Sign Up </Link>
        
     {session?.user ? ( <UserAccountNav /> ) : 

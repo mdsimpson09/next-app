@@ -1,20 +1,25 @@
+//app/matches/page.tsx
 import React from 'react'
-import MatchingPage from '@/app/components/profile/matching';
+import Matches from '@/app/components/profile/matching';
 import { getServerSession } from 'next-auth';
 // import { authOptions } from "../../../lib/auth";
 import { authOptions } from "@/lib/auth";
 import Link from 'next/link';
 
 
+
 async function MatchPage() {
     const session = await getServerSession(authOptions);
     // console.log(session);
+    const player_id = session?.user?.id; 
+    const username = session?.user?.username;
 
     if (session?.user) {
   return (
     <div >
   
-      <MatchingPage />
+      <Matches player_id={username} /> 
+      {/* <Matches player_id={player_id} /> */}
       
     </div>
   )}

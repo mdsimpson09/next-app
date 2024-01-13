@@ -1,111 +1,57 @@
 'use client'
-import { useSession } from "next-auth/react";
-import { useEffect, useState } from "react";
+import { useEffect, useState } from 'react';
+import Link from 'next/link';
 
-type Match = {
-  username: string | null;
+interface Match {
+  username: string;
+}
+
+interface MatchesProps {
   player_id: number;
-};
+}
 
-const MatchingPage: React.FC = () => {
-
+const Matches: React.FC<MatchesProps> = ({ player_id }) => {
   const [matches, setMatches] = useState<Match[]>([]);
-
-  const { data: session } = useSession();
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    if (session) {
-      const { user } = session;
+    const apiUrl = "/api/matches";
 
-      const apiUrl = `/api/matches/${user.id}`;
+    const fetchMatches = async () => {
+      const response = await fetch(apiUrl);
 
-      fetch(apiUrl)
-        .then(res => res.json())
-        .then(data => {
-          setMatches(data.matches); 
-        })
-        .catch(error => {
-          console.error("Error fetching matches:", error);
-        });
-    }
-  }, [session]);
+      if(response.ok) {
+        const data = await response.json();
+       
+        setMatches(data.matches); 
+      } else {
+        console.error('Failed to fetch matches');  
+      }
+      setLoading(false);
+    };
+    
+    fetchMatches();
+  }, [player_id]);
 
-  if (!matches) {
-    return (
-      <div className="flex flex-col items-center justify-center h-screen">
-        <p>No mutual matches found.</p>
-      </div>
-    );
+  if(loading) {
+    return <div>Loading...</div>;
   }
 
   return (
     <div>
-      <h1>Your Matches</h1>
-      {matches.map((match) => (
-        <div key={match.player_id}>
-          <p>Matched with: {match.username}</p>
-        </div>
-      ))}
+      <h1 className="text-gray-700 font-bold capitalize">Matches for {player_id}</h1>
+
+      <ul>
+        {matches && matches.length > 0 ? (
+          matches.map((username, index) => (
+            <Link href={`/profile/${username}`}> <li key={index}>{username}</li> </Link>
+          ))
+        ) : (
+          <li>No matches found</li>
+        )}
+      </ul>
     </div>
   );
-};
+}
 
-export default MatchingPage;
-//   'use client';
-// import React, { useEffect, useState } from 'react';
-
-// type MatchType = {
-//     player_id_1: number;
-//     player_id_2: number;
-//     // Add other match details you might need
-//   };
-  
-//   // Define the type for the response from your API
-//   type MatchesApiResponse = {
-//     matches: MatchType[];
-//   };
-  
-//   const MatchingPage: React.FC = () => {
-//     const [matches, setMatches] = useState<MatchType[]>([]);
-    
-//     useEffect(() => {
-//       // Fetch matches for the logged-in user
-//       const apiUrl = "/api/findmatches";
-//       fetch(apiUrl)
-//         .then(response => {
-//           if (!response.ok) {
-//             throw new Error(`HTTP error! status: ${response.status}`);
-//           }
-//           return response.json();
-//         })
-//         .then((data: MatchesApiResponse) => {
-//           setMatches(data.matches);
-//         })
-//         .catch(error => {
-//           console.error('Error fetching matches:', error);
-//         });
-//     }, []);
-  
-//     if (!matches || matches.length === 0) {
-//       return (
-//         <div className="flex flex-col items-center justify-center h-screen">
-//           <p>No matches found, or something went wrong.</p>
-//         </div>
-//       );
-//     }
-  
-//     return (
-//       <div>
-//         <h1>Your Matches</h1>
-//         {matches.map((match, index) => (
-//           <div key={index}>
-//             {/* Replace this div with your match card component */}
-//             Match between Player {match.player_id_1} and Player {match.player_id_2}
-//           </div>
-//         ))}
-//         {/* Add any match controls or additional components here */}
-//       </div>
-//     );
-//   };
-  
-//   export default MatchingPage;
+export default Matches;
