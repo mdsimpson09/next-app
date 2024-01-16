@@ -46,7 +46,7 @@ const LogInForm = () => {
       redirect:false,
     });
     //////sign in information console ///////
-    console.log(signInData);
+    // console.log(signInData);
 
     if(signInData?.error){
       toast({

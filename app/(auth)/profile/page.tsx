@@ -4,7 +4,7 @@ import { getServerSession } from 'next-auth';
 // import { authOptions } from "../../../lib/auth";
 import { authOptions } from "@/lib/auth";
 import Link from 'next/link';
-import Footer from "@/app/components/ui/footer";
+
 import Header from "@/app/components/ui/Header";
 import DislikeButton from '@/app/components/profile/dislike-button';
 

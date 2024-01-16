@@ -52,7 +52,7 @@ export async function GET(req: NextRequest, res: NextResponse) {
       take: 1,
       skip: randomOffset,
     });
-    console.log("Player ID to Dislike:", randomPlayer?.player_id);
+    // console.log("Player ID to Dislike:", randomPlayer?.player_id);
 
     if (!randomPlayer) {
       return NextResponse.json(

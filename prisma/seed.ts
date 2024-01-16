@@ -244,7 +244,7 @@ async function main() {
       ],
     })
 
-    console.log('Profiles, relationships, and matches created successfully.')
+    // console.log('Profiles, relationships, and matches created successfully.')
   } catch (error) {
     console.error('Error creating user profiles and relationships:', error)
   } finally {

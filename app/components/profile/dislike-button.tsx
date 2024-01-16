@@ -35,7 +35,7 @@ interface DislikeButtonProps {
         });
 
         const data = await response.json();
-        console.log(data.message);
+        // console.log(data.message);
 
      // Handle response
         if (response.ok) {

@@ -72,7 +72,7 @@ export const authOptions: NextAuthOptions = {
           email: user.email
         };
       }
-      console.log(token);
+      // console.log(token);
       return token;
       
     },

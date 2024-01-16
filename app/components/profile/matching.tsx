@@ -1,3 +1,5 @@
+//app/components/profile/matching.tsx
+
 'use client'
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
@@ -44,7 +46,7 @@ const Matches: React.FC<MatchesProps> = ({ player_id }) => {
       <ul>
         {matches && matches.length > 0 ? (
           matches.map((username, index) => (
-            <Link href={`/profile/${username}`}> <li key={index}>{username}</li> </Link>
+            <Link href={`${username}`}> <li key={index}>{username}</li> </Link>
           ))
         ) : (
           <li>No matches found</li>

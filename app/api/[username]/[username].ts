@@ -1,4 +1,4 @@
-//app/api/match-profile.ts/[username].ts
+//app/api/[username]/[username].ts
 import { NextRequest, NextResponse } from 'next/server';
 import { PrismaClient } from '@prisma/client';
 import { getServerSession } from 'next-auth';
@@ -7,21 +7,12 @@ import { authOptions } from '@/lib/auth';
 const prisma = new PrismaClient();
 
 export async function GET(req: NextRequest) {
+  const username = req.nextUrl.searchParams.get("username");
+
   try {
-    const session = await getServerSession(authOptions);
-    // console.log('Session:', session);
-
-    if (!session?.user?.username) {
-      console.log('No session or username');
-      return NextResponse.json(
-        { message: 'Authentication required' },
-        { status: 401 }
-      );
-    }
-
     const player = await prisma.player.findUnique({
       where: {
-        username: session.user.username,
+        username: username,
       },
       select: {
         first_name: true,
@@ -33,12 +24,19 @@ export async function GET(req: NextRequest) {
     });
 
     if (!player) {
-      return NextResponse.json({ message: 'Player not found' }, { status: 404 });
+      return NextResponse.json(
+        { message: "Player not found" }, 
+        { status: 404 }
+      );
     }
 
     return NextResponse.json({ player }, { status: 200 });
+
   } catch (error) {
-    console.error('Error:', error);
-    return NextResponse.json({ message: 'Something went wrong :(' }, { status: 500 });
+    console.error("Error:", error);
+    return NextResponse.json(
+      { message: "Something went wrong :(" },
+       { status: 500 }
+    );
   }
 }

@@ -21,7 +21,7 @@ export async function GET(req: NextRequest, res: NextResponse){
        );
      }
      const playerId = session?.user?.id;
-     console.log('playerId:', playerId)
+    //  console.log('playerId:', playerId)
 
      // Fetch matched profiles where the current user is player_id_1
      const matchesAsPlayer1 = await prisma.matchedProfile.findMany({
@@ -38,7 +38,7 @@ export async function GET(req: NextRequest, res: NextResponse){
       ...matchesAsPlayer1.map(match => match.player2.username),
       ...matchesAsPlayer2.map(match => match.player1.username)
     ]; 
-    console.log('Matches from DB:', combinedMatches);
+    // console.log('Matches from DB:', combinedMatches);
     return NextResponse.json({ matches: combinedMatches });
   } catch (error) {
     console.error('Error:', error);

@@ -30,7 +30,7 @@ const Meet: React.FC<MeetProps> = ({ player }) => {
         return response.json();
       })
       .then((data) => {
-        console.log("Fetched player data:", data); // Debugging log
+        // console.log("Fetched player data:", data); // Debugging log
         setProfileData(data.player);
       })
       .catch((error) => {

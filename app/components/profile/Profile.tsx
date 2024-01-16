@@ -21,7 +21,7 @@ const Profile: React.FC<ProfileProps> = ({ player }) => {
     useState<ProfileProps["player"]>(player);
 
   useEffect(() => {
-    const apiUrl = "/api/profile";
+    const apiUrl = "/api/profile/";
 
     fetch(apiUrl)
       .then((response) => {
