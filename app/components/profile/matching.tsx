@@ -46,7 +46,7 @@ const Matches: React.FC<MatchesProps> = ({ player_id }) => {
       <ul>
         {matches && matches.length > 0 ? (
           matches.map((username, index) => (
-            <Link href={`${username}`}> <li key={index}>{username}</li> </Link>
+            <Link href={`player/${username}`}> <li key={index}>{username}</li> </Link>
           ))
         ) : (
           <li>No matches found</li>
