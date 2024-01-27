@@ -2,6 +2,7 @@
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { MdGames } from "react-icons/md";
+import { SlGameController } from 'react-icons/sl';
 
 interface Match {
   player_id: number;
@@ -47,7 +48,9 @@ const Matches: React.FC<MatchesProps> = ({ player_id }) => {
   }, [player_id]);
 
   if (loading) {
-    return <div>Loading...</div>;
+    return <div className="flex justify-center items-center h-screen">
+    <SlGameController className="text-indigo-400 text-9xl animate-spin-slow" />
+  </div>;
   }
 
   return (

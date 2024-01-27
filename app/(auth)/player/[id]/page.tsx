@@ -5,11 +5,12 @@ import { getServerSession } from 'next-auth';
 import { authOptions } from "@/lib/auth";
 import Link from 'next/link';
 import { FaXTwitter } from "react-icons/fa6";
-import { FaTwitch } from "react-icons/fa6";
+import { FaTwitch } from "react-icons/fa";
 import { FaDiscord } from "react-icons/fa6";
 import { FaFacebook } from "react-icons/fa";
 import { FaInstagram } from "react-icons/fa";
-
+import { SlGameController } from 'react-icons/sl';
+import { BsTwitch } from "react-icons/bs"
 
 interface UserProfileProps {
   player_id: string;
@@ -38,59 +39,72 @@ const UserProfilePage: React.FC = () => {
   }, [pathname]);
 
   if (!userProfile) {
-    return <div>Loading...</div>;
+    return  <div className="flex justify-center items-center h-screen">
+    <SlGameController className="text-indigo-400 text-9xl animate-spin-slow" />
+  </div>;
   }
 
-
   return (
-    <div>
-    <div className="min-w-6 max-3 py-6 p-6 bg-white shadow-md rounded-md my-8">
-      <img
-        src={userProfile.image || "/profile-image.jpg"}
-        alt="Profile"
-        className="w-full h-64 object-cover rounded-md mb-4"
-      />
-      <h1 className="text-2xl font-semibold mb-2 capitalize">
-        {userProfile.first_name || ""}
-      </h1>
-      <p className="text-gray-500 mb-4">{userProfile.username || ""}</p>
-      <p className="text-gray-700 font-bold capitalize"> about me: </p>
-      <p> {userProfile.bio || ""}</p>
-      <br></br>
-      <p className="text-gray-700 font-bold capitalize"> I'm looking for:</p>
-      <p className="text-gray-700">{userProfile.looking_for || ""}</p>
+<div className='flex justify-center items-center bg-indigo-200 p-10 rounded-xl min-w-7 w-[475px] h-[700px]'>
+      <div className='max-w-3xl py-6 px-6 bg-white shadow-md rounded-md my-8 w-[500px] h-[600px] overflow-y-auto hide-scrollbar'>
+        <div className="flex justify-center items-center ">
+          <img
+            src={userProfile.image || "/profile-image.jpg"}
+            alt="Profile"
+            className="w-full h-64 object-cover rounded-md mb-4" // Adjusted classes for image to match second page
+          />
+        </div>
+        <h1 className="text-2xl font-semibold mb-2 capitalize">
+          {userProfile.first_name || ""}
+        </h1>
+        <p className="text-gray-500 mb-4">{userProfile.username || ""}</p>
+        <p className="text-gray-700 font-bold capitalize"> about me: </p>
+        <p> {userProfile.bio || ""}</p>
+        <br />
+        <p className="text-gray-700 font-bold capitalize"> I'm looking for:</p>
+        <p className="text-gray-700">{userProfile.looking_for || ""}</p>
+        <br />
+        <br></br>
+        <h1 className="text-xl font-bold mb-4">Connect with {userProfile.username}</h1>
+        <ul className="flex list-none p-0 justify-between">
+          <li className="mr-4">
+          <Link href={`https://twitch.com/${userProfile.username}`} >
+          <div className="flex items-center justify-center bg-purple-700 rounded-lg cursor-pointer" style={{ width: '40px', height: '40px' }}>
+            <FaTwitch className='text-white text-2xl '/>
+          </div>
+        </Link>
+        </li>
+      <li className="mr-4">
+        <Link href={`https://discord.com/${userProfile.username}`} >
+          <div className="flex items-center justify-center bg-indigo-400 rounded-lg cursor-pointer" style={{ width: '40px', height: '40px' }}>
+            <FaDiscord className="text-white text-2xl" />
+          </div>
+        </Link>
+      </li>
+      <li className="mr-4">
+        <Link href={`https://instagram.com/${userProfile.username}`}>
+          <div className="flex items-center justify-center bg-white rounded-lg cursor-pointer" style={{ width: '40px', height: '40px' }}>
+            <img src='/instagram.png' className="text-white text-2xl" />
+          </div>
+        </Link>
+      </li>
+      <li className="mr-4">
+        <Link href={`https://twitter.com/${userProfile.username}`} passHref>
+          <div className="flex items-center justify-center bg-black rounded-lg cursor-pointer" style={{ width: '40px', height: '40px' }}>
+            <FaXTwitter className="text-white text-2xl" />
+          </div>
+        </Link>
+      </li>
+      <li>
+        <Link href={`https://facebook.com/${userProfile.username}`} passHref>
+          <div className="flex items-center justify-center bg-blue-600 rounded-full cursor-pointer" style={{ width: '40px', height: '40px' }}>
+            <FaFacebook className="text-white text-2xl" />
+          </div>
+        </Link>
+      </li>
+        </ul>
+      </div>
     </div>
-    <div className= 'bg-slate-50 p-10 rounded-sm min-w-7'>
-      <h1 className="text-xl font-bold mb-4">Connect with {userProfile.username}</h1>
-      <ul className="flex list-none p-0">
-        <li className="mr-4">
-          <Link href={`https://twitch.com/${userProfile.username}`} passHref>
-            <FaTwitch />
-          </Link>
-        </li>
-        <li className="mr-4">
-          <Link href={`https://discord.com/${userProfile.username}`} passHref>
-            <FaDiscord />
-          </Link>
-        </li>
-        <li className="mr-4">
-          <Link href={`https://instagram.com/${userProfile.username}`} passHref>
-            <FaInstagram />
-          </Link>
-        </li>
-        <li className="mr-4">
-          <Link href={`https://twitter.com/${userProfile.username}`} passHref>
-            <FaXTwitter />
-          </Link>
-        </li>
-        <li>
-          <Link href={`https://facebook.com/${userProfile.username}`} passHref>
-            <FaFacebook />
-          </Link>
-        </li>
-      </ul>
-    </div>
-  </div>
   );
 
   

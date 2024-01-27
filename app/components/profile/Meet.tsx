@@ -2,7 +2,8 @@
 import React, { useEffect, useState } from 'react';
 import MeetUI from './MeetUI';
 import MeetControls from './MeetControls';
-import { set } from 'zod';
+
+import { SlGameController } from 'react-icons/sl';
 
 
 interface MeetProps {
@@ -43,9 +44,9 @@ const Meet: React.FC<MeetProps> = ({ player }) => {
 
   if (!profileData) {
     return (
-      <div className="flex flex-col items-center justify-center h-screen">
-        <p>Whoops! Something went wrong.</p>
-      </div>
+      <div className="flex justify-center items-center h-screen">
+      <SlGameController className="text-indigo-400 text-9xl animate-spin-slow" />
+    </div>
     );
   }
 

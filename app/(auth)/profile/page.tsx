@@ -4,6 +4,7 @@ import { getServerSession } from 'next-auth';
 // import { authOptions } from "../../../lib/auth";
 import { authOptions } from "@/lib/auth";
 import Link from 'next/link';
+import { Button } from '@radix-ui/themes';
 
 
 
@@ -14,11 +15,16 @@ async function ProfilePage() {
 
     if (session?.user) {
   return (
-    <div >
-
-      <Profile />
-  
+    <div>
+    <Profile />
+    <br></br>
+    {/* Wrap the button in a div with Flexbox styling */}
+    <div className='flex justify-center'>
+        <Button className= 'bg-red-300'> 
+            <Link href="/edit">Edit Profile</Link>
+        </Button>
     </div>
+</div>
   )}
   return (
     <h2>Please 

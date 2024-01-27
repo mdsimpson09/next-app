@@ -1,9 +1,6 @@
 
 import React from 'react'
 import Link from 'next/link'
-import { usePathname } from 'next/navigation'
-import { GiGamepad } from "react-icons/gi";
-import classnames from 'classnames'
 import { getServerSession } from 'next-auth';
 import { Button } from './components/ui/button'
 import { authOptions } from '@/lib/auth';

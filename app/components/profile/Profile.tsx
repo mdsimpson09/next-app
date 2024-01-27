@@ -1,6 +1,7 @@
 //app/components/profile/profile.tsx
 'use client';
 import React, { useEffect, useState } from 'react';
+import { SlGameController } from 'react-icons/sl';
 
 import Link from 'next/link';
 import { Button } from '@radix-ui/themes';
@@ -42,15 +43,16 @@ const Profile: React.FC<ProfileProps> = ({ player }) => {
 
   if (!profileData) {
     return (
-      <div className="flex flex-col items-center justify-center h-screen">
-        <p>Whoops! Something went wrong.</p>
-      </div>
+      <div className="flex justify-center items-center h-screen">
+      <SlGameController className="text-indigo-400 text-9xl animate-spin-slow" />
+    </div>
     );
   }
 
   return (
-    <div>
-      <div className="min-w-6 max-3 py-6 p-6 bg-white shadow-md rounded-md my-8">
+
+    <div className='flex justify-center items-center bg-indigo-200 p-10 rounded-xl min-w-7 w-[475px] h-[650px]'>
+        <div className='max-w-3xl py-6 px-6 bg-white shadow-md rounded-md my-8 w-[375px] h-[500px] overflow-y-auto hide-scrollbar'>
         <img
           src={profileData.image || "/profile-image.jpg"}
           alt="Profile"
@@ -66,7 +68,7 @@ const Profile: React.FC<ProfileProps> = ({ player }) => {
         <p className="text-gray-700 font-bold capitalize"> I'm looking for:</p>
         <p className="text-gray-700">{profileData.looking_for || ""}</p>
       </div>
-      <Button><Link href="/edit">Edit Profile</Link></Button>
+      
     </div>
   );
 };
