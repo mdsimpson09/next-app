@@ -1,71 +1,15 @@
-// import React, { FC } from "react";
-
-// interface ArticlePageProps {
-//   params: { username: string
-//             player_id: string 
-//             first_name: string
-//   };
-// }
-
-// const ArticlePage: FC<ArticlePageProps> = ({ params }) => {
-//   return (
-//     <main>
-//       <h1 className="text-black text-4xl font-bold">{`Article id:${params.username}`}</h1>
-//       <h1 className="text-black text-4xl font-bold">{`Article id:${params.first_name}`}</h1>
-//     </main>
-//   );
-// };
-
-// export default ArticlePage;
-
-
-// 'use client'
-// import React, { useEffect, useState } from 'react';
-
-// interface PlayerProfile {
-//   player_id: number;
-//   first_name: string | null;
-//   last_name: string | null;
-//   username: string;
-//   email: string;
-//   bio: string | null;
-//   looking_for: string | null;
-//   image: string | null;
-// }
-
-// const UserPage: React.FC = () => {
-//   const [profile, setProfile] = useState<PlayerProfile | null>(null);
-
-//   useEffect(() => {
-//     const playerId = "20"; // Replace with dynamic player_id if needed
-//     fetch(`/api/player-profile/${playerId}`)
-//       .then((response) => response.json())
-//       .then((data) => setProfile(data))
-//       .catch((error) => console.error("Error fetching profile data:", error));
-//   }, []);
-
-//   if (!profile) {
-//     return <div>Loading profile...</div>;
-//   }
-
-//   return (
-//     <div>
-//       <h1>Profile of {profile.username}</h1>
-//       <p>Name: {profile.first_name} {profile.last_name}</p>
-//       <p>Username: {profile.username}</p>
-//       <p>Email: {profile.email}</p>
-//       <p>Bio: {profile.bio || "Not provided"}</p>
-//       <p>Looking For: {profile.looking_for || "Not provided"}</p>
-//       {/* Display image if it exists */}
-//       {profile.image && <img src={profile.image} alt="Profile" />}
-//     </div>
-//   );
-// };
-
-// export default UserPage;
 'use client'
 import React, { useEffect, useState } from 'react';
 import { usePathname } from 'next/navigation';
+import { getServerSession } from 'next-auth';
+import { authOptions } from "@/lib/auth";
+import Link from 'next/link';
+import { FaXTwitter } from "react-icons/fa6";
+import { FaTwitch } from "react-icons/fa6";
+import { FaDiscord } from "react-icons/fa6";
+import { FaFacebook } from "react-icons/fa";
+import { FaInstagram } from "react-icons/fa";
+
 
 interface UserProfileProps {
   player_id: string;
@@ -79,6 +23,7 @@ interface UserProfileProps {
 const UserProfilePage: React.FC = () => {
   const [userProfile, setUserProfile] = useState<UserProfileProps | null>(null);
   const pathname = usePathname();
+  
   
   useEffect(() => {
     // Extract player ID from pathname
@@ -95,6 +40,7 @@ const UserProfilePage: React.FC = () => {
   if (!userProfile) {
     return <div>Loading...</div>;
   }
+
 
   return (
     <div>
@@ -114,8 +60,40 @@ const UserProfilePage: React.FC = () => {
       <p className="text-gray-700 font-bold capitalize"> I'm looking for:</p>
       <p className="text-gray-700">{userProfile.looking_for || ""}</p>
     </div>
+    <div className= 'bg-slate-50 p-10 rounded-sm min-w-7'>
+      <h1 className="text-xl font-bold mb-4">Connect with {userProfile.username}</h1>
+      <ul className="flex list-none p-0">
+        <li className="mr-4">
+          <Link href={`https://twitch.com/${userProfile.username}`} passHref>
+            <FaTwitch />
+          </Link>
+        </li>
+        <li className="mr-4">
+          <Link href={`https://discord.com/${userProfile.username}`} passHref>
+            <FaDiscord />
+          </Link>
+        </li>
+        <li className="mr-4">
+          <Link href={`https://instagram.com/${userProfile.username}`} passHref>
+            <FaInstagram />
+          </Link>
+        </li>
+        <li className="mr-4">
+          <Link href={`https://twitter.com/${userProfile.username}`} passHref>
+            <FaXTwitter />
+          </Link>
+        </li>
+        <li>
+          <Link href={`https://facebook.com/${userProfile.username}`} passHref>
+            <FaFacebook />
+          </Link>
+        </li>
+      </ul>
+    </div>
   </div>
   );
+
+  
 };
 
 export default UserProfilePage;

@@ -1,4 +1,4 @@
-'use client'
+
 import React, { useState, useEffect } from 'react'
 import { useSession } from 'next-auth/react'
 
@@ -10,6 +10,8 @@ import { Icon, IconButton } from '@mui/material';
 import TinderCard from'react-tinder-card'
 import DislikeButton from './dislike-button';
 import LikeButton from './like-button';
+import Link from 'next/link';
+
 
 interface MeetProps {
   player: {
@@ -20,32 +22,46 @@ interface MeetProps {
     looking_for: string | null;
     image: string | null;
   } | null;
+
+  toggleRefresh: () => void;
 }
-const Footer: React.FC<MeetProps> = ({ player }) => {
+const MeetControls: React.FC<MeetProps> = ({ player, toggleRefresh }) => {
+
   if (!player) {
     return null;
   }
   return (
-    <div>
-      <TinderCard className=" flex items-center justify-between space-x-4">
-        {/* <DislikeButton playerIdToDislike={player?.player_id} /> */}
 
-        <DislikeButton playerIdToDislike={player ? player.player_id : null} />
-
-        <IconButton className="font-bold text-3xl rounded-full bg-blue-400 w-16 h-16 text-white hover:bg-blue-500 focus:outline-none focus:ring focus:ring-green-400 focus:ring-opacity-50 shadow-lg">
-          <RedoIcon />
-        </IconButton>
-
-        <IconButton className="font-bold text-3xl rounded-full bg-blue-400 w-16 h-16 text-white hover:bg-blue-500 focus:outline-none focus:ring focus:ring-green-400 focus:ring-opacity-50 shadow-lg">
-          <ExitIcon />
-        </IconButton>
-
-     <LikeButton playerIdTolike={player ? player.player_id : null} />
-      </TinderCard>
+    <div className="p-5 flex items-center justify-between space-x-4">
+    <div className="w-24 h-24 bg-red-600 rounded-full text-white font-bold hover:bg-red-600 focus:outline-none focus:ring focus:ring-green-400 shadow-md flex items-center justify-center">
+    <DislikeButton playerIdToDislike={player ? player.player_id : null} />
     </div>
+
+    <div
+      onClick={toggleRefresh}
+      className="font-bold text-3xl rounded-full bg-blue-400 w-16 h-16 text-white hover:bg-blue-500 focus:outline-none focus:ring focus:ring-green-400 focus:ring-opacity-50 shadow-lg flex items-center justify-center"
+    >
+      <IconButton className="flex items-center justify-center">
+        <RedoIcon className="text-gray-50" />
+      </IconButton>
+    </div>
+
+    <div className="font-bold text-3xl rounded-full bg-blue-400 w-16 h-16 text-white hover:bg-blue-500 focus:outline-none focus:ring focus:ring-green-400 focus:ring-opacity-50 shadow-lg flex items-center justify-center">
+      <Link href="/">
+        <IconButton>
+          <ExitIcon className="text-gray-50" />
+        </IconButton>
+      </Link>
+    </div>
+
+    <div className="font-bold text-3xl rounded-full bg-green-500 w-24 h-24 hover:bg-green-600 focus:outline-none focus:ring focus:ring-green-400 focus:ring-opacity-50 shadow-lg flex items-center justify-center">
+
+      <LikeButton playerIdTolike={player ? player.player_id : null} />
+    </div>
+  </div>
   );
 }
 
 
 
-export default Footer;
+export default MeetControls;

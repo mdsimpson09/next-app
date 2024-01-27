@@ -5,8 +5,8 @@ import { getServerSession } from 'next-auth';
 import { authOptions } from "@/lib/auth";
 import Link from 'next/link';
 
-import Header from "@/app/components/ui/Header";
-import DislikeButton from '@/app/components/profile/dislike-button';
+
+
 
 async function ProfilePage() {
     const session = await getServerSession(authOptions);

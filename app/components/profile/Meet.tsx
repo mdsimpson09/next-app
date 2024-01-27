@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import MeetUI from './MeetUI';
 import MeetControls from './MeetControls';
+import { set } from 'zod';
 
 
 interface MeetProps {
@@ -17,7 +18,8 @@ interface MeetProps {
 
 const Meet: React.FC<MeetProps> = ({ player }) => {
   const [profileData, setProfileData] = useState<MeetProps['player']>(player);
-
+  const [refresh, setRefresh] = useState(1);
+ const handleToggleRefresh = () => {setRefresh(refresh + 1)};
   useEffect(() => {
     const apiUrl = "/api/meet"; 
     
@@ -37,7 +39,7 @@ const Meet: React.FC<MeetProps> = ({ player }) => {
         console.error('Error fetching profile data:', error);
         setProfileData(null);
       });
-  }, []); 
+  }, [refresh]); 
 
   if (!profileData) {
     return (
@@ -49,9 +51,13 @@ const Meet: React.FC<MeetProps> = ({ player }) => {
 
   return (
     <div>
-        
+    <div >
       <MeetUI player={profileData} />
-      <MeetControls player={profileData} />
+      </div>
+      <br></br>
+      <div>
+      <MeetControls player={profileData} toggleRefresh={handleToggleRefresh}/>
+    </div>
     </div>
   );
 };

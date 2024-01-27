@@ -13,9 +13,13 @@ async function MeetPage() {
     if (session?.user) {
   return (
     <div >
-  
+      <div >
       <Meet />
+      </div>
+    <div>
       
+    </div>
+
     </div>
   )}
   return (

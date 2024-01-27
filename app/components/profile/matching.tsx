@@ -1,77 +1,7 @@
-// //app/components/profile/matching.tsx
-
-// 'use client'
-// import { useEffect, useState } from 'react';
-// import Link from 'next/link';
-
-// interface Match {
-//   username: string;
-//   player_id: number;
-// }
-
-// interface MatchesProps {
-//   player_id: number;
-// }
-
-// const Matches: React.FC<MatchesProps> = ({ player_id }) => {
-//   const [matches, setMatches] = useState<Match[]>([]);
-//   const [loading, setLoading] = useState(true);
-
-//   useEffect(() => {
-//     const apiUrl = "/api/matches";
-
-//     const fetchMatches = async () => {
-//       const response = await fetch(apiUrl);
-
-//       if(response.ok) {
-//         const data = await response.json();
-       
-//         setMatches(data.matches); 
-//       } else {
-//         console.error('Failed to fetch matches');  
-//       }
-//       setLoading(false);
-//     };
-    
-//     fetchMatches();
-//   }, [player_id]);
-
-//   if(loading) {
-//     return <div>Loading...</div>;
-//   }
-//   console.log(matches);
-//   return (
-//     <div>
-//       <h1 className="text-gray-700 font-bold capitalize">Matches for {player_id}</h1>
-
-//       <ul>
-//         {matches && matches.length > 0 ? (
-        
-//           matches.map((username, player_id) => (
-            
-//             <Link href={`/player/${player_id}`}> 
-//             <li key={player_id}> code for usernames </li> 
-//             </Link>
-//             // <Link href={`player/${username}`}> 
-//             // <li key={index}>{username}</li> 
-//             // </Link>
-//           ))
-//         ) : (
-//           <li>No matches found</li>
-          
-
-//         )}
-//       </ul>
-//     </div>
-//   );
-// }
-
-// export default Matches;
-
-
 'use client'
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
+import { MdGames } from "react-icons/md";
 
 interface Match {
   player_id: number;
@@ -123,17 +53,24 @@ const Matches: React.FC<MatchesProps> = ({ player_id }) => {
   return (
     <div>
       <h1 className="text-gray-700 font-bold capitalize">Matches for {player_id}</h1>
-      <ul>
-        {matches.length > 0 ? (
-          matches.map((match) => (
-            <Link href={`/player/${match.player_id}`} key={match.player_id}> 
-              <li>{match.username ?? 'Unknown User'}</li> 
-            </Link>
-          ))
-        ) : (
-          <li>No matches found</li>
-        )}
-      </ul>
+      <br></br>
+      <div className= 'bg-slate-50 p-5 rounded-sm min-w-7 flex flex-col justify-center items-center capitalize'>
+      <ul className='list-none p-0'>
+    {matches.length > 0 ? (
+      matches.map((match) => (
+        <Link href={`/player/${match.player_id}`} key={match.player_id}>
+          <li className='flex items-center justify-between mb-2'>
+            <MdGames className='flex-shrink-0' />
+            <span className='mx-2'>{match.username ?? 'Unknown User'}</span>
+            <MdGames className='flex-shrink-0' />
+          </li>
+        </Link>
+      ))
+    ) : (
+      <li>No matches found</li>
+    )}
+  </ul>
+      </div>
     </div>
   );
 };

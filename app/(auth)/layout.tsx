@@ -11,6 +11,7 @@ const Layout: FC<LayoutProps> = ({ children }) => {
     <div className= 'bg-indigo-200 p-20 rounded-xl min-w-7'>
      {children}
     </div>
+    
   )
 }
 

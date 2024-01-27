@@ -21,8 +21,8 @@ const Meet: React.FC<MeetProps> = ({ player }) => {
 
   return (
     
-    <div>
-      <div className="max-w-3xl py-6 px-6 bg-white shadow-md rounded-md my-8">
+    <div className='flex justify-center items-center bg-indigo-200 p-10 rounded-xl min-w-7 w-[475px] h-[650px]'>
+      <div className='max-w-3xl py-6 px-6 bg-white shadow-md rounded-md my-8 w-[375px] h-[500px] overflow-y-auto hide-scrollbar'>
         <img
           src={player.image || "/profile-image.jpg"}
           alt="Profile"
