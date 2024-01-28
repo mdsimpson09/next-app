@@ -54,11 +54,14 @@ const Matches: React.FC<MatchesProps> = ({ player_id }) => {
   }
 
   return (
-    <div>
-      <h1 className="text-gray-700 font-bold capitalize">Matches for {player_id}</h1>
+    <div className='flex justify-center items-center bg-indigo-200 p-10 rounded-xl min-w-7 w-[475px] h-[700px]'>
+    <div className='max-w-3xl py-6 px-6 bg-white shadow-md rounded-md my-8 w-[500px] h-[600px] overflow-y-auto hide-scrollbar'>
+      <h1 className="text-2xl font-semibold text-center mb-4 capitalize">
+        Matches for {player_id}
+      </h1>
       <br></br>
       <div className= 'bg-slate-50 p-5 rounded-sm min-w-7 flex flex-col justify-center items-center capitalize'>
-      <ul className='list-none p-0'>
+      <ul className='list-none p-0 text-xl'>
     {matches.length > 0 ? (
       matches.map((match) => (
         <Link href={`/player/${match.player_id}`} key={match.player_id}>
@@ -74,6 +77,7 @@ const Matches: React.FC<MatchesProps> = ({ player_id }) => {
     )}
   </ul>
       </div>
+    </div>
     </div>
   );
 };
