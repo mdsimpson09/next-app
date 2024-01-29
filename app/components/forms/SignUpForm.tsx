@@ -75,7 +75,7 @@ const SignUpForm = () => {
   }
   useEffect(() => {
     if(isSubmitted) {
-      router.push("/login");
+      router.push("/edit");
     }
   }, [isSubmitted]);
 
