@@ -35,25 +35,37 @@ const EditForm = () => {
       // username: "",
       bio:"",
       looking_for:"",
-      // image:""
+      image:""
      
     },
   });
   async function onSubmit(values: z.infer<typeof FormSchema>) {
+    const payload = {
+      // Include only the fields that are not undefined.
+      ...values.bio && { bio: values.bio },
+      ...values.looking_for && { looking_for: values.looking_for },
+      ...values.image && { image: values.image }
+    };
     const response = await fetch("/api/edit", {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({
-        // username:values.username,
-        bio: values.bio,
-        looking_for: values.looking_for,
-        image: values.image
-      }),
+      body: JSON.stringify(
+      // {username:values.username,
+      //   bio: values.bio || "",
+      //   looking_for: values.looking_for || "",
+      //     image: values.image || ""}
+        payload
+      ),
     })
     if(response.ok) {
       setIsSubmitted(true);
+      toast({
+        title: "Success",
+        description: "Profile updated successfully!",
+        variant: "default",
+      })
     } else {
       toast({
         title: "Error",
