@@ -33,20 +33,20 @@ const MeetControls: React.FC<MeetProps> = ({ player, toggleRefresh }) => {
   return (
 
     <div className="p-5 flex items-center justify-between space-x-4">
-    <div className="w-24 h-24 bg-red-600 rounded-full text-white font-bold hover:bg-red-600 focus:outline-none focus:ring focus:ring-green-400 shadow-md flex items-center justify-center">
-    <DislikeButton playerIdToDislike={player ? player.player_id : null} />
+    <div onClick={toggleRefresh} className="font-bold text-3xl rounded-full bg-red-500 w-28 h-28 hover:bg-red-600 focus:outline-none focus:ring-opacity-50 shadow-lg flex items-center justify-center">
+    <DislikeButton playerIdToDislike={player ? player.player_id : null}   />
     </div>
 
-    <div
+    {/* <div
       onClick={toggleRefresh}
       className="font-bold text-3xl rounded-full bg-blue-400 w-16 h-16 text-white hover:bg-blue-500 focus:outline-none focus:ring focus:ring-green-400 focus:ring-opacity-50 shadow-lg flex items-center justify-center"
     >
       <IconButton className="flex items-center justify-center">
         <RedoIcon className="text-gray-50" />
       </IconButton>
-    </div>
+    </div> */}
 
-    <div className="font-bold text-3xl rounded-full bg-blue-400 w-16 h-16 text-white hover:bg-blue-500 focus:outline-none focus:ring focus:ring-green-400 focus:ring-opacity-50 shadow-lg flex items-center justify-center">
+    <div className="font-bold text-2xl rounded-full bg-blue-400 w-24 h-24 text-white hover:bg-blue-500 focus:outline-none focus:ring-opacity-50 shadow-lg flex items-center justify-center">
       <Link href="/">
         <IconButton>
           <ExitIcon className="text-gray-50" />
@@ -54,7 +54,7 @@ const MeetControls: React.FC<MeetProps> = ({ player, toggleRefresh }) => {
       </Link>
     </div>
 
-    <div className="font-bold text-3xl rounded-full bg-green-500 w-24 h-24 hover:bg-green-600 focus:outline-none focus:ring focus:ring-green-400 focus:ring-opacity-50 shadow-lg flex items-center justify-center">
+    <div onClick={toggleRefresh} className="font-bold text-3xl rounded-full bg-green-500 w-28 h-28 hover:bg-green-600 focus:outline-none focus:ring-opacity-50 shadow-lg flex items-center justify-center">
 
       <LikeButton playerIdTolike={player ? player.player_id : null} />
     </div>
