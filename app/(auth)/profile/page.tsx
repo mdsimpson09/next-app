@@ -20,7 +20,7 @@ async function ProfilePage() {
     <br></br>
     {/* Wrap the button in a div with Flexbox styling */}
     <div className='flex justify-center'>
-        <Button className= 'bg-red-300'> 
+        <Button > 
             <Link href="/edit">Edit Profile</Link>
         </Button>
     </div>

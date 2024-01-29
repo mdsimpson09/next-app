@@ -75,6 +75,8 @@ const EditForm = () => {
   }, [isSubmitted]);
 
   return (
+    <div className='flex justify-center items-center bg-indigo-200 p-10 rounded-xl min-w-7 w-[475px] h-[650px]'>
+    <div className='max-w-3xl py-6 px-6 bg-white shadow-md rounded-md my-8 w-[375px] h-[550px] overflow-y-auto hide-scrollbar'>
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)}>
        <div>
@@ -86,7 +88,11 @@ const EditForm = () => {
             <FormItem>
               <FormLabel>About You:</FormLabel>
               <FormControl>
-                <input className= 'rounded-sm flex w-full items-center justify-evenly' placeholder="Tell others about yourself! favorite games, consoles, etc" {...field} />
+              <textarea 
+                      className='border border-indigo-200 rounded-md w-full p-2 resize-none' 
+                      placeholder="Tell us about yourself..." 
+                      {...field} 
+                    />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -101,7 +107,11 @@ const EditForm = () => {
             <FormItem>
               <FormLabel>Looking For:</FormLabel>
               <FormControl>
-                <input className= 'rounded-sm flex w-full items-center justify-evenly' placeholder="Why are you using Gamer-Date?" type='text'{...field} />
+              <textarea 
+                      className='border border-indigo-200 rounded-md w-full p-2 resize-none' 
+                      placeholder="What are you hoping to find on Gamer Date?" 
+                      {...field} 
+                    />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -116,7 +126,7 @@ const EditForm = () => {
             <FormItem>
               <FormLabel>Update your photo:</FormLabel>
               <FormControl>
-                <input className= 'rounded-sm flex w-full items-center justify-evenly' placeholder="Photo URL" type='URL'{...field} />
+              <input className= 'border indigo-200 rounded-sm flex w-full items-center justify-evenly' placeholder="" {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -125,14 +135,16 @@ const EditForm = () => {
  
         />
       </div>
-      <div className='mx-auto my-4 flex w-full items-center justify-evenly before:mr-4 before:block before:h-px before:flex-grow before:bg-stone-400 after:ml-4 after:bloack after:h-px after:flex-grow after:bg-stone-400'>
-
+      <div>
+            <br></br>
       </div>
         <Button className='w-full' type="submit">Update Profile</Button>
       </form>
       
       
     </Form>
+    </div>
+    </div>
   );
 };
 export default EditForm;

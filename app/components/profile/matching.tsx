@@ -60,7 +60,7 @@ const Matches: React.FC<MatchesProps> = ({ player_id }) => {
         Matches for {player_id}
       </h1>
       <br></br>
-      <div className= 'bg-slate-50 p-5 rounded-sm min-w-7 flex flex-col justify-center items-center capitalize'>
+      <div className= 'bg-indigo-50 p-5 rounded-sm min-w-7 flex flex-col justify-center items-center capitalize'>
       <ul className='list-none p-0 text-xl'>
     {matches.length > 0 ? (
       matches.map((match) => (

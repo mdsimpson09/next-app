@@ -64,6 +64,8 @@ const LogInForm = () => {
   }
 
   return (
+    <div className='flex justify-center items-center bg-indigo-200 p-10 rounded-xl min-w-7 w-[475px] h-[650px]'>
+    <div className='max-w-3xl py-6 px-6 bg-white shadow-md rounded-md my-8 w-[375px] h-[550px] overflow-y-auto hide-scrollbar'>
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)}>
        <div className= 'space-y-2'>
@@ -75,7 +77,7 @@ const LogInForm = () => {
             <FormItem>
               <FormLabel>Email:</FormLabel>
               <FormControl>
-                <input className= 'rounded-sm flex w-full items-center justify-evenly' placeholder="mail@example.com" type='email'{...field} />
+              <input className= 'border indigo-200 rounded-sm flex w-full items-center justify-evenly' placeholder="" {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -89,13 +91,14 @@ const LogInForm = () => {
             <FormItem>
               <FormLabel>Password:</FormLabel>
               <FormControl>
-                <input className= 'flex mb-2 rounded-sm w-full items-center justify-center' type='password' placeholder="password" {...field} />
+              <input className= 'border indigo-200 rounded-sm flex w-full items-center justify-evenly' placeholder="" {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
             
           )}
         />
+        <br></br>
       </div>
         <Button className='w-full my-6' type="submit">Login</Button>
       </form>
@@ -108,6 +111,8 @@ const LogInForm = () => {
           <Link className='text-blue-500 hover:underline' href= '/sign-up'>Sign up</Link>.
     </p>
     </Form>
+    </div>
+    </div>
   );
 };
 export default LogInForm
