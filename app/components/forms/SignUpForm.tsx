@@ -150,7 +150,9 @@ const SignUpForm = () => {
             <FormItem>
               <FormLabel>Password:</FormLabel>
               <FormControl>
-              <input className= 'border indigo-200 rounded-sm flex w-full items-center justify-evenly' placeholder="" {...field} />
+              <input 
+              type= "password"
+              className= 'border indigo-200 rounded-sm flex w-full items-center justify-evenly' placeholder="" {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -164,7 +166,9 @@ const SignUpForm = () => {
             <FormItem>
               <FormLabel>Re-Enter your password</FormLabel>
               <FormControl>
-              <input className= 'border indigo-200 rounded-sm flex w-full items-center justify-evenly' placeholder="" {...field} />
+              <input 
+              type= "password"
+              className= 'border indigo-200 rounded-sm flex w-full items-center justify-evenly' placeholder="" {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
