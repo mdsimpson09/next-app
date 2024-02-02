@@ -97,7 +97,7 @@ const mutualLike = await prisma.likedProfile.findUnique({
     }
   }
 
-  return NextResponse.json({ message: "Player liked successfully" });
+  return NextResponse.json({ message: `Player ${likedPlayerId} liked successfully`  });
 
 } catch (error) {
   console.error("Error:", error);
