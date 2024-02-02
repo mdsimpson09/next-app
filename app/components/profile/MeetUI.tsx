@@ -1,7 +1,15 @@
 'use client';
 import React, { useEffect, useState } from 'react';
 import DislikeButton from './dislike-button';
+import LikeButton from './like-button';
+import Link from 'next/link';
+import { useSession } from 'next-auth/react'
 
+import HeartIcon from '@mui/icons-material/FavoriteOutlined';
+import HateIcon from '@mui/icons-material/CloseOutlined';
+import ExitIcon from '@mui/icons-material/ExitToAppOutlined';
+import RedoIcon from '@mui/icons-material/ReplayOutlined';
+import { Icon, IconButton } from '@mui/material';
 
 interface MeetProps {
   player: {
@@ -12,9 +20,11 @@ interface MeetProps {
     looking_for: string | null;
     image: string | null;
   } | null;
+  toggleRefresh: () => void;
 }
 
-const Meet: React.FC<MeetProps> = ({ player }) => {
+const Meet: React.FC<MeetProps> = ({ player, toggleRefresh }) => {
+
   if (!player) {
     return null;
   }
@@ -38,6 +48,7 @@ const Meet: React.FC<MeetProps> = ({ player }) => {
         <p className="text-gray-700 font-bold capitalize"> I'm looking for:</p>
         <p className="text-gray-700">{player.looking_for || ""}</p>
       </div>
+      <br></br>
     </div>
   );
 };
