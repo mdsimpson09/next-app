@@ -119,9 +119,13 @@ const Meet: React.FC = () => {
 
   return (
     <div>
+      <div>
       <MeetUI player={profileData} />
-      <br />
+      </div>
+      <div className="mt-.5">
       <MeetControls player={profileData} toggleRefresh={handleToggleRefresh}/>
+    </div>
+
     </div>
   );
 };

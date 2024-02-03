@@ -14,6 +14,11 @@ module.exports = {
       screens: {
         "2xl": "1400px",
       },
+      extend: {
+        boxShadow: {
+          'outline': '0 0 0 2px white', // Adjust the px value as needed to change the "outline" thickness
+        },
+      },
     },
     extend: {
       colors: {

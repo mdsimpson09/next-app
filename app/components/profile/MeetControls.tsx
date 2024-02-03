@@ -32,7 +32,7 @@ const MeetControls: React.FC<MeetProps> = ({ player, toggleRefresh }) => {
   }
   return (
 
-    <div className="p-5 flex items-center justify-between space-x-4">
+    <div className=" container p-2 flex items-center justify-between space-x-4">
     <div onClick={toggleRefresh} className="font-bold text-3xl rounded-full bg-red-500 w-28 h-28 hover:bg-red-600 focus:outline-none focus:ring-opacity-50 shadow-lg flex items-center justify-center">
     <DislikeButton playerIdToDislike={player ? player.player_id : null}   />
     </div>
