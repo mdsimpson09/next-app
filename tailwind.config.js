@@ -15,6 +15,12 @@ module.exports = {
         "2xl": "1400px",
       },
       extend: {
+        ringWidth: {
+          DEFAULT: '2px', // Default ring width
+        },
+        ringColor: {
+          DEFAULT: '#ffffff', // Default ring color
+        },
         boxShadow: {
           'outline': '0 0 0 2px white', // Adjust the px value as needed to change the "outline" thickness
         },

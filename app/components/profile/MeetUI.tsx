@@ -108,6 +108,7 @@ export default Meet;
 //         <p>{player.looking_for || ""}</p>
 //       </div>
 //     </div>
+
 //     {/* Button Container Below Indigo Box */}
 //     <div className="p-5 flex items-center justify-center space-x-4"> {/* Adjust margin as needed */}
 //       <div onClick={toggleRefresh} className="font-bold text-3xl rounded-full bg-red-500 w-28 h-28 hover:bg-red-600 focus:outline-none focus:ring-opacity-50 shadow-lg flex items-center justify-center">

@@ -1,6 +1,8 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import url('https://fonts.googleapis.com/css2?family=Protest+Strike&display=swap');
+
  
 @layer base {
   :root {
@@ -88,4 +90,8 @@
     display: none; /* For Chrome, Safari, and Opera */
   }
 
+}
+
+.navbar-font {
+  font-family: 'Protest Strike', cursive;
 }
