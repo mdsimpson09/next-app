@@ -24,6 +24,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       {/* <body className={inter.className}> */}
+      <head> 
+        <link href="https://fonts.googleapis.com/css2?family=Protest+Strike&display=swap" rel="stylesheet" />
+        
       <body className=" justify-center items-center h-screen pt-36">
         <SessionProvider>
         <Theme>
@@ -35,6 +38,7 @@ export default function RootLayout({
         </Theme>
         </SessionProvider>
         </body>
+        </head>
     </html>
   )
 }

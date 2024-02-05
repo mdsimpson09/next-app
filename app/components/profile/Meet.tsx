@@ -68,6 +68,7 @@
 import React, { useEffect, useState } from 'react';
 import MeetUI from './MeetUI';
 import MeetControls from './MeetControls';
+import { SlGameController } from 'react-icons/sl';
 
 interface PlayerProfile {
   player_id: number | null;
@@ -112,8 +113,15 @@ const Meet: React.FC = () => {
   if (!profileData) {
     return (
       <div className="flex justify-center items-center h-screen">
-        <p>Out of player profiles. Check back later for more.</p>
+        <SlGameController className="text-indigo-400 text-9xl animate-spin-slow" />
+        <h1 className="text-lg">
+          That's all for now! We're searching for more players! 
+        </h1>
+        <br></br>
+        <div>
+      <SlGameController className="text-indigo-400 text-9xl animate-spin-slow" />
       </div>
+    </div>
     );
   }
 
