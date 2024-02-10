@@ -20,7 +20,8 @@ const FormSchema = z.object({
   last_name: z.string().min(2, 'Last name is required'),
   password: z.string().min(1, 'Passowrd is required').min(8, 'Password must have 8 characters'),
   username: z.string().min(1, 'Username is required').min(8),
-  confirmPassword: z.string().min(1, 'Password confirmation is required')
+  confirmPassword: z.string().min(1, 'Password confirmation is required'),
+  image: z.string().url('Invalid URL format')
 })
 .refine((data)=> data.password === data.confirmPassword,{
   path: ['confirmPassword'],
@@ -40,7 +41,8 @@ const SignUpForm = () => {
       username: "",
       email: "",
       password: "",
-      confirmPassword:""
+      confirmPassword:"",
+      image:""
     },
   });
   async function onSubmit(values: z.infer<typeof FormSchema>) {
@@ -55,6 +57,7 @@ const SignUpForm = () => {
         username: values.username,
         email: values.email,
         password: values.password,
+        image: values.image,
       }),
     })
     if(response.ok) {
@@ -175,6 +178,24 @@ const SignUpForm = () => {
             
           )}
         />
+           <FormField
+              control={form.control}
+              name="image"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Profile Image:</FormLabel>
+                  <FormControl>
+                    <input 
+                      type="text" 
+                      className='border border-indigo-200 rounded-md w-full p-2' 
+                      placeholder="Image URL" 
+                      {...field} 
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
         <br></br>
       </div>
         <Button className='w-full' type="submit">Register</Button>

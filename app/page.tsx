@@ -13,7 +13,7 @@ export default async function Home() {
       <main>
       <img  className ='flex flex-col justify-left items-left h-25 w-25' src= "/logo.png" alt="logo"  /> 
       <br></br>
-    <h2 className= 'flex flex-col justify-center items-center text-4xl'>Welcome to Gamer Date, {session.user.username}</h2>
+    <h2 className= 'flex flex-col justify-center items-center text-4xl capitalize'>Welcome to Gamer Date, {session.user.username}</h2>
     <div className='flex flex-col justify-center items-center'>
       <br></br>
       <br></br>

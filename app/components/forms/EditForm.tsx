@@ -12,6 +12,8 @@ type ProfileData = {
   first_name?: string | null;
   username?: string | null;
   bio?: string | null;
+  favorite_games?: string | null;
+  favorite_device?: string | null;
   looking_for?: string | null;
   image?: string | null;
   player_id?: number;
@@ -20,6 +22,8 @@ type ProfileData = {
 const FormSchema = z.object({
   bio: z.string().optional(),
   looking_for: z.string().optional(),
+  favorite_games: z.string().optional(),
+  favorite_device: z.string().optional(),
   image: z.string().optional(),
 });
 
@@ -46,6 +50,8 @@ const EditForm = () => {
           form.reset({
             bio: data.player.bio || '',
             looking_for: data.player.looking_for || '',
+            favorite_games: data.player.favorite_games || '',
+            favorite_device: data.player.favorite_device || '',
             image: data.player.image || '',
           });
         }
@@ -104,6 +110,7 @@ const EditForm = () => {
       <div className='max-w-3xl py-6 px-6 bg-white shadow-md rounded-md'>
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)}>
+           
             <FormField
               control={form.control}
               name="bio"
@@ -121,6 +128,42 @@ const EditForm = () => {
                 </FormItem>
               )}
             />
+                     <FormField
+              control={form.control}
+              name="favorite_games"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Favorite Games:</FormLabel>
+                  <FormControl>
+                    <textarea 
+                      className='border border-indigo-200 rounded-md w-full p-2 resize-none' 
+                      placeholder="Tell us what your favorite games are..." 
+                      {...field} 
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+
+<FormField
+              control={form.control}
+              name="favorite_device"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Preferred Gaming Device:</FormLabel>
+                  <FormControl>
+                    <textarea 
+                      className='border border-indigo-200 rounded-md w-full p-2 resize-none' 
+                      placeholder="Tell us how you play..." 
+                      {...field} 
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+
             <FormField
               control={form.control}
               name="looking_for"

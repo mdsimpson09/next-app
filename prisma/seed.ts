@@ -146,6 +146,9 @@
 //     await prisma.$disconnect()
 //     process.exit(1)
 //   })
+
+//seed.ts 
+
 import { PrismaClient } from '@prisma/client'
 
 const prisma = new PrismaClient()
@@ -155,21 +158,32 @@ async function main() {
     // Create new and unique user profiles
     const user1 = await prisma.player.create({
       data: {
-        username: 'jonisdope',
-        first_name: 'Jon',
-        last_name: 'Dope',
-        email: 'user1332@prisma.io',
-        password: 'password123',
+        username: 'jessiclaw',
+        first_name: 'Jessica',
+        last_name: 'vaughn',
+        email: 'jessica@gmail.com',
+        password: '123123123',
+        bio: 'I live in chicago and love games',
+        looking_for: 'friends',
+        favorite_games: 'League of Legends, Apex Legends, Call of Duty',
+        favorite_device: 'PC',
+        image: 'https://images.unsplash.com/photo-1517841905240-472988babdf9?q=80&w=2459&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
       },
     })
 
     const user2 = await prisma.player.create({
       data: {
-        username: 'Janesmith22',
-        first_name: 'Janice',
-        last_name: 'Smith',
-        email: 'user223@prisma.io',
-        password: 'password123',
+        username: 'Kennyiscool',
+        first_name: 'kenny',
+        last_name: 'Degenhardt',
+        email: 'kenny@gmail.com',
+        password: '123123123',
+        bio: 'I live in chicago and love games',
+        looking_for: 'friends',
+        favorite_games: 'League of Legends, Apex Legends, Call of Duty',
+        favorite_device: 'PC',
+        image: 'https://plus.unsplash.com/premium_photo-1679221612895-1d02be15c941?q=80&w=2728&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+
       },
     })
 
@@ -178,18 +192,28 @@ async function main() {
         username: 'GilmoreMichel',
         first_name: 'Michel',
         last_name: 'Johnson',
-        email: 'user31@prisma.io',
-        password: 'password123',
+        email: 'michel@gmail.com',
+        password: '123123123',
+        bio: 'I live in chicago and love games',
+        looking_for: 'friends',
+        favorite_games: 'League of Legends, Apex Legends, Call of Duty',
+        favorite_device: 'PC',
+        image: 'https://plus.unsplash.com/premium_photo-1680124607787-9e54118b1624?q=80&w=2787&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
       },
     })
 
     const user4 = await prisma.player.create({
       data: {
-        username: 'EmBrown',
-        first_name: 'Em',
-        last_name: 'Brown',
-        email: 'user41@prisma.io',
-        password: 'password123',
+        username: 'Gretchen2020',
+        first_name: 'Gretchen',
+        last_name: 'Walsh',
+        email: 'gretchen@gmail.com',
+        password: '123123123',
+        bio: 'I live in chicago and love games',
+        looking_for: 'friends',
+        favorite_games: 'League of Legends, Apex Legends, Call of Duty',
+        favorite_device: 'PC',
+        image: 'https://images.unsplash.com/photo-1581065178047-8ee15951ede6?q=80&w=2815&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
       },
     })
 
@@ -198,8 +222,13 @@ async function main() {
         username: 'willtaylor',
         first_name: 'Will',
         last_name: 'Taylor',
-        email: 'user52@prisma.io',
-        password: 'password123',
+        email: 'will@gmail.com',
+        password: '123123123',
+        bio: 'I live in chicago and love games',
+        looking_for: 'friends',
+        favorite_games: 'League of Legends, Apex Legends, Call of Duty',
+        favorite_device: 'PC',
+        image: 'https://images.unsplash.com/photo-1559969143-b2defc6419fd?q=80&w=2730&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
       },
     })
 
@@ -207,46 +236,21 @@ async function main() {
       data: {
         username: 'OliveBranch',
         first_name: 'Olive',
-        last_name: 'Wilson12',
-        email: 'user61@prisma.io',
-        password: 'password123',
+        last_name: 'Wilson',
+        email: 'olive@gmail.com',
+        password: '123123123',
+        bio: 'I am a software engineer and a musician. I love to play guitar and sing. I am a huge fan of the NBA',
+        looking_for:'friends',
+        favorite_games: 'League of Legends, Apex Legends, Call of Duty',
+        favorite_device: 'PC',
+        image:'https://images.unsplash.com/photo-1685674594222-677108fd5d85?q=80&w=2714&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
       },
     })
 
-    // Define disliking relationships
-    await prisma.dislikedProfile.createMany({
-      data: [
-        { player_id: user1.player_id, disliked_player_id: user2.player_id },
-        { player_id: user1.player_id, disliked_player_id: user3.player_id },
-        { player_id: user2.player_id, disliked_player_id: user6.player_id },
-      ],
-    })
-
-    // Define liking relationships
-    await prisma.likedProfile.createMany({
-      data: [
-        { player_id: user1.player_id, liked_player_id: user4.player_id },
-        { player_id: user1.player_id, liked_player_id: user6.player_id },
-        { player_id: user2.player_id, liked_player_id: user1.player_id },
-        { player_id: user2.player_id, liked_player_id: user3.player_id },
-        { player_id: user3.player_id, liked_player_id: user2.player_id },
-        { player_id: user3.player_id, liked_player_id: user4.player_id },
-      ],
-    })
-
-    // Define matched profiles (A liked B and B liked A)
-    await prisma.matchedProfile.createMany({
-      data: [
-        { player_id_1: user1.player_id, player_id_2: user2.player_id },
-        { player_id_1: user2.player_id, player_id_2: user1.player_id },
-        { player_id_1: user2.player_id, player_id_2: user3.player_id },
-        { player_id_1: user3.player_id, player_id_2: user2.player_id },
-      ],
-    })
 
     // console.log('Profiles, relationships, and matches created successfully.')
   } catch (error) {
-    console.error('Error creating user profiles and relationships:', error)
+    console.error('Error creating user profiles:', error)
   } finally {
     await prisma.$disconnect()
   }

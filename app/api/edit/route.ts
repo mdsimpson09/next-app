@@ -16,12 +16,13 @@ const updatePlayerSchema = z.object({
     bio: z.string().min(1, 'Bio is required'),
     looking_for: z.string().min(1, 'Looking for is required'),
     image: z.string().url('Invalid URL format').optional(),
+    favorite_games: z.string().min(1, 'Favorite games is required'),
+    favorite_device: z.string().min(1, 'Favorite device is required'),
     // username: z.string().min(2, 'Username is required')
   })
 
 export async function PUT(req: Request) {
-   
-
+  
   try{
     const session = await getServerSession(authOptions);
     // console.log('Session:', session);
@@ -35,7 +36,7 @@ export async function PUT(req: Request) {
       }
   
     const body = await req.json();
-      const {bio, looking_for, image} = updatePlayerSchema.parse(body);
+      const {bio, looking_for, image, favorite_games, favorite_device} = updatePlayerSchema.parse(body);
       
     
 
@@ -46,7 +47,9 @@ export async function PUT(req: Request) {
         data: {
               bio:bio,
               looking_for: looking_for,
-              image:image
+              image:image,
+              favorite_games:favorite_games,
+              favorite_device:favorite_device,
           }
       })
 
@@ -54,4 +57,6 @@ export async function PUT(req: Request) {
       return NextResponse.json({updatedPlayer: 'Player updated successfully'}, {status: 201})
   } 
   catch(error){
-      return NextResponse.json({message: 'Something went wrong :('}, {status: 500})}}
+}
+
+      return NextResponse.json({message: 'Something went wrong :('}, {status: 500})}

@@ -20,6 +20,8 @@ model Player {
   bio         String?   @db.VarChar(500)
   looking_for String?   @db.VarChar(500)
   image       String?
+  favorite_games       String?   @db.VarChar(500)
+  favorite_device      String?   @db.VarChar(500)
   accounts    Account[]
   sessions    Session[]
 

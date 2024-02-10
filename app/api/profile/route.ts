@@ -84,6 +84,8 @@ export async function GET(req: NextRequest) {
         username: true,
         bio: true,
         looking_for: true,
+        favorite_device:true,
+        favorite_games: true, 
         image: true,
       },
     });

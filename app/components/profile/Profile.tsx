@@ -12,6 +12,8 @@ interface ProfileProps {
     username: string | null;
     bio: string | null;
     looking_for: string | null;
+    favorite_games: string | null;
+    favorite_device: string | null;
     image: string | null;
     player_id: number;
   };
@@ -62,8 +64,14 @@ const Profile: React.FC<ProfileProps> = ({ player }) => {
           {profileData.first_name || ""}
         </h1>
         <p className="text-gray-500 mb-4">{profileData.username || ""}</p>
-        <p className="text-gray-700 font-bold capitalize"> about me: </p>
+        <p className="text-gray-700 font-bold capitalize"> About Me: </p>
         <p> {profileData.bio || ""}</p>
+        <br></br>
+        <p className="text-gray-700 font-bold capitalize"> My Favorite Games: </p>
+        <p> {profileData.favorite_games || ""}</p>
+        <br></br>
+        <p className="text-gray-700 font-bold capitalize"> Preferred Devices </p>
+        <p> {profileData.favorite_device || ""}</p>
         <br></br>
         <p className="text-gray-700 font-bold capitalize"> I'm looking for:</p>
         <p className="text-gray-700">{profileData.looking_for || ""}</p>

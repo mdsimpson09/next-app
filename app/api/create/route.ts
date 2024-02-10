@@ -15,6 +15,7 @@ const playerSchema = z.object({
     last_name: z.string().min(2, 'Last name is required'),
     password: z.string().min(1, 'Passowrd is required').min(8, 'Password must have 8 characters'),
     username: z.string().min(1, 'Username is required').min(8),
+    image: z.string().url('Invalid URL format'),
     
   })
 
@@ -23,7 +24,7 @@ const playerSchema = z.object({
 export async function POST(req: Request) {
     try{
         const body = await req.json();
-        const {first_name, last_name, username, email, password} = playerSchema.parse(body);
+        const {first_name, last_name, username, email, password, image} = playerSchema.parse(body);
 
             //email is unique
 
@@ -50,7 +51,8 @@ export async function POST(req: Request) {
                 first_name: first_name,
                 last_name: last_name,
                 email: email,
-                password: hashedPassword
+                password: hashedPassword,
+                image: image
             }
         
         })
