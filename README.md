@@ -1,7 +1,11 @@
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-Typescript 
-Prisma/Postgresql 
+Typescript was used due to Nextjs having a built in support or automatically isntalling needed packages and configuring proper settings. There is also a useful typescript plugin 
+
+Prisma is developer friendly and easy to use. It also has a transparent development process that is visible on Github. 
+
+Postgresql was used due to its popularity and well-regarded open-source relational databses. It has a large list of features in regards to performance, security, programming extentions and configuration. 
+
 
 ## Getting Started
 
@@ -37,4 +41,5 @@ The easiest way to deploy your Next.js app is to use the [Vercel Platform](https
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
 
 Cypress is used for E2E testing
+tests were run and stored on the cypress cloud. 124 passed and 0 failed tests 
 
