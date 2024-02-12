@@ -86,6 +86,11 @@ export async function GET(req: NextRequest) {
         looking_for: true,
         favorite_device:true,
         favorite_games: true, 
+        instagram: true,
+        facebook: true,
+        twitter: true,
+        twitch: true,
+        discord: true,
         image: true,
       },
     });

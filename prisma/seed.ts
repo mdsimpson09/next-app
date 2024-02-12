@@ -167,25 +167,15 @@ async function main() {
         looking_for: 'friends',
         favorite_games: 'League of Legends, Apex Legends, Call of Duty',
         favorite_device: 'PC',
+        instagram: 'https://www.instagram.com/',
+        twitter: 'https://twitter.com/?lang=en',
+        facebook: 'https://www.facebook.com/',
+        twitch: 'https://www.twitch.com/',
+        discord: 'https://www.discord.com/',
         image: 'https://images.unsplash.com/photo-1517841905240-472988babdf9?q=80&w=2459&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
       },
     })
 
-    const user2 = await prisma.player.create({
-      data: {
-        username: 'Kennyiscool',
-        first_name: 'kenny',
-        last_name: 'Degenhardt',
-        email: 'kenny@gmail.com',
-        password: '123123123',
-        bio: 'I live in chicago and love games',
-        looking_for: 'friends',
-        favorite_games: 'League of Legends, Apex Legends, Call of Duty',
-        favorite_device: 'PC',
-        image: 'https://plus.unsplash.com/premium_photo-1679221612895-1d02be15c941?q=80&w=2728&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
-
-      },
-    })
 
     const user3 = await prisma.player.create({
       data: {
@@ -198,22 +188,12 @@ async function main() {
         looking_for: 'friends',
         favorite_games: 'League of Legends, Apex Legends, Call of Duty',
         favorite_device: 'PC',
+        instagram: 'https://www.instagram.com/',
+        twitter: 'https://twitter.com/?lang=en',
+        facebook: 'https://www.facebook.com/',
+        twitch: 'https://www.twitch.com/',
+        discord: 'https://www.discord.com/',
         image: 'https://plus.unsplash.com/premium_photo-1680124607787-9e54118b1624?q=80&w=2787&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
-      },
-    })
-
-    const user4 = await prisma.player.create({
-      data: {
-        username: 'Gretchen2020',
-        first_name: 'Gretchen',
-        last_name: 'Walsh',
-        email: 'gretchen@gmail.com',
-        password: '123123123',
-        bio: 'I live in chicago and love games',
-        looking_for: 'friends',
-        favorite_games: 'League of Legends, Apex Legends, Call of Duty',
-        favorite_device: 'PC',
-        image: 'https://images.unsplash.com/photo-1581065178047-8ee15951ede6?q=80&w=2815&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
       },
     })
 
@@ -228,6 +208,11 @@ async function main() {
         looking_for: 'friends',
         favorite_games: 'League of Legends, Apex Legends, Call of Duty',
         favorite_device: 'PC',
+        instagram: 'https://www.instagram.com/',
+        twitter: 'https://twitter.com/?lang=en',
+        facebook: 'https://www.facebook.com/',
+        twitch: 'https://www.twitch.com/',
+        discord: 'https://www.discord.com/',
         image: 'https://images.unsplash.com/photo-1559969143-b2defc6419fd?q=80&w=2730&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
       },
     })
@@ -243,6 +228,11 @@ async function main() {
         looking_for:'friends',
         favorite_games: 'League of Legends, Apex Legends, Call of Duty',
         favorite_device: 'PC',
+        instagram: 'https://www.instagram.com/',
+        twitter: 'https://twitter.com/?lang=en',
+        facebook: 'https://www.facebook.com/',
+        twitch: 'https://www.twitch.com/',
+        discord: 'https://www.discord.com/',
         image:'https://images.unsplash.com/photo-1685674594222-677108fd5d85?q=80&w=2714&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
       },
     })

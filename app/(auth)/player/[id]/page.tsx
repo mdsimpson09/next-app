@@ -17,8 +17,15 @@ interface UserProfileProps {
   first_name: string | null;
   username: string | null;
   bio: string | null;
+  favorite_games: string | null;
+  favorite_device: string | null;
   looking_for: string | null;
   image: string | null;
+  instagram: string | null;
+  facebook: string | null;
+  twitter: string | null;
+  twitch: string | null;
+  discord: string | null;
 }
 
 const UserProfilePage: React.FC = () => {
@@ -64,45 +71,63 @@ const UserProfilePage: React.FC = () => {
         <p className="text-gray-700 font-bold capitalize"> I'm looking for:</p>
         <p className="text-gray-700">{userProfile.looking_for || ""}</p>
         <br />
+
+        <p className="text-gray-700 font-bold capitalize"> Favorite Games: </p>
+        <p> {userProfile.favorite_games || ""}</p>
+        <br />
+        <p className="text-gray-700 font-bold capitalize"> How I Play: </p>
+        <p> {userProfile.favorite_device || ""}</p>
+        <br />
+        
         <br></br>
-        <h1 className="text-xl font-bold mb-4">Connect with {userProfile.username}</h1>
+        <h1 className="text-xl font-bold mb-4 capitalize">Connect with {userProfile.username}</h1>
         <ul className="flex list-none p-0 justify-between">
-          <li className="mr-4">
-          <Link href={`https://twitch.com/${userProfile.username}`} >
-          <div className="flex items-center justify-center bg-purple-700 rounded-lg cursor-pointer" style={{ width: '40px', height: '40px' }}>
-            <FaTwitch className='text-white text-2xl '/>
-          </div>
-        </Link>
-        </li>
-      <li className="mr-4">
-        <Link href={`https://discord.com/${userProfile.username}`} >
-          <div className="flex items-center justify-center bg-indigo-400 rounded-lg cursor-pointer" style={{ width: '40px', height: '40px' }}>
-            <FaDiscord className="text-white text-2xl" />
-          </div>
-        </Link>
-      </li>
-      <li className="mr-4">
-        <Link href={`https://instagram.com/${userProfile.username}`}>
-          <div className="flex items-center justify-center bg-white rounded-lg cursor-pointer" style={{ width: '40px', height: '40px' }}>
-            <img src='/instagram.png' className="text-white text-2xl" />
-          </div>
-        </Link>
-      </li>
-      <li className="mr-4">
-        <Link href={`https://twitter.com/${userProfile.username}`} passHref>
-          <div className="flex items-center justify-center bg-black rounded-lg cursor-pointer" style={{ width: '40px', height: '40px' }}>
-            <FaXTwitter className="text-white text-2xl" />
-          </div>
-        </Link>
-      </li>
-      <li>
-        <Link href={`https://facebook.com/${userProfile.username}`} passHref>
-          <div className="flex items-center justify-center bg-blue-600 rounded-full cursor-pointer" style={{ width: '40px', height: '40px' }}>
-            <FaFacebook className="text-white text-2xl" />
-          </div>
-        </Link>
-      </li>
-        </ul>
+  {userProfile.twitch && (
+    <li className="mr-4">
+      <Link href={userProfile.twitch}>
+        <div className="flex items-center justify-center bg-purple-700 rounded-lg cursor-pointer" style={{ width: '40px', height: '40px' }}>
+          <FaTwitch className='text-white text-2xl'/>
+        </div>
+      </Link>
+    </li>
+  )}
+  {userProfile.discord && (
+    <li className="mr-4">
+      <Link href={userProfile.discord}>
+        <div className="flex items-center justify-center bg-indigo-400 rounded-lg cursor-pointer" style={{ width: '40px', height: '40px' }}>
+          <FaDiscord className="text-white text-2xl" />
+        </div>
+      </Link>
+    </li>
+  )}
+  {userProfile.instagram && (
+    <li className="mr-4">
+      <Link href={userProfile.instagram}>
+        <div className="flex items-center justify-center bg-white rounded-lg cursor-pointer" style={{ width: '40px', height: '40px' }}>
+          <img src='/instagram.png' alt="Instagram" className="text-white text-2xl" />
+        </div>
+      </Link>
+    </li>
+  )}
+  {userProfile.twitter && (
+    <li className="mr-4">
+      <Link href={userProfile.twitter}>
+        <div className="flex items-center justify-center bg-black rounded-lg cursor-pointer" style={{ width: '40px', height: '40px' }}>
+          <FaXTwitter className="text-white text-2xl" />
+        </div>
+      </Link>
+    </li>
+  )}
+  {userProfile.facebook && (
+    <li>
+      <Link href={userProfile.facebook}>
+        <div className="flex items-center justify-center bg-blue-600 rounded-full cursor-pointer" style={{ width: '40px', height: '40px' }}>
+          <FaFacebook className="text-white text-2xl" />
+        </div>
+      </Link>
+    </li>
+  )}
+</ul>
       </div>
     </div>
   );

@@ -22,6 +22,11 @@ model Player {
   image       String?
   favorite_games       String?   @db.VarChar(500)
   favorite_device      String?   @db.VarChar(500)
+  instagram   String?   @db.VarChar(500)
+  twitter     String?   @db.VarChar(500)
+  facebook    String?   @db.VarChar(500)
+  twitch      String?   @db.VarChar(500)
+  discord     String?   @db.VarChar(500)
   accounts    Account[]
   sessions    Session[]
 

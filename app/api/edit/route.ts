@@ -18,6 +18,12 @@ const updatePlayerSchema = z.object({
     image: z.string().url('Invalid URL format').optional(),
     favorite_games: z.string().min(1, 'Favorite games is required'),
     favorite_device: z.string().min(1, 'Favorite device is required'),
+    instagram: z.string().url('Invalid URL format').optional(),
+    facebook: z.string().url('Invalid URL format').optional(),
+    twitch: z.string().url('Invalid URL format').optional(),
+    twitter: z.string().url('Invalid URL format').optional(),
+    discord: z.string().url('Invalid URL format').optional(),
+   
     // username: z.string().min(2, 'Username is required')
   })
 
@@ -36,7 +42,7 @@ export async function PUT(req: Request) {
       }
   
     const body = await req.json();
-      const {bio, looking_for, image, favorite_games, favorite_device} = updatePlayerSchema.parse(body);
+      const {bio, looking_for, image, favorite_games, favorite_device, instagram, facebook, twitter, twitch, discord} = updatePlayerSchema.parse(body);
       
     
 
@@ -50,6 +56,12 @@ export async function PUT(req: Request) {
               image:image,
               favorite_games:favorite_games,
               favorite_device:favorite_device,
+              instagram:instagram,
+              facebook:facebook,
+              twitter:twitter,
+              twitch:twitch,
+              discord:discord
+              
           }
       })
 

@@ -2,6 +2,12 @@
 'use client';
 import React, { useEffect, useState } from 'react';
 import { SlGameController } from 'react-icons/sl';
+import { FaXTwitter } from "react-icons/fa6";
+import { FaTwitch } from "react-icons/fa";
+import { FaDiscord } from "react-icons/fa6";
+import { FaFacebook } from "react-icons/fa";
+import { FaInstagram } from "react-icons/fa";
+import { BsTwitch } from "react-icons/bs"
 
 import Link from 'next/link';
 import { Button } from '@radix-ui/themes';
@@ -16,12 +22,18 @@ interface ProfileProps {
     favorite_device: string | null;
     image: string | null;
     player_id: number;
+    instagram: string | null;
+    twitter: string | null;
+    discord: string | null;
+    twitch: string | null;
+    facebook: string | null;
   };
 }
 
 const Profile: React.FC<ProfileProps> = ({ player }) => {
   const [profileData, setProfileData] =
     useState<ProfileProps["player"]>(player);
+    
 
   useEffect(() => {
     const apiUrl = "/api/profile/";
@@ -67,16 +79,66 @@ const Profile: React.FC<ProfileProps> = ({ player }) => {
         <p className="text-gray-700 font-bold capitalize"> About Me: </p>
         <p> {profileData.bio || ""}</p>
         <br></br>
+        <p className="text-gray-700 font-bold capitalize"> I'm looking for:</p>
+        <p className="text-gray-700">{profileData.looking_for || ""}</p>
+        <br></br>
         <p className="text-gray-700 font-bold capitalize"> My Favorite Games: </p>
         <p> {profileData.favorite_games || ""}</p>
         <br></br>
-        <p className="text-gray-700 font-bold capitalize"> Preferred Devices </p>
+        <p className="text-gray-700 font-bold capitalize"> How I Play: </p>
         <p> {profileData.favorite_device || ""}</p>
         <br></br>
-        <p className="text-gray-700 font-bold capitalize"> I'm looking for:</p>
-        <p className="text-gray-700">{profileData.looking_for || ""}</p>
+    
+        <h1 className="text-xl font-bold mb-4">Where players can connect with you!</h1>
+        <ul className="flex list-none p-0 justify-between">
+  {profileData.twitch && (
+    <li className="mr-4">
+      <Link href={profileData.twitch}>
+        <div className="flex items-center justify-center bg-purple-700 rounded-lg cursor-pointer" style={{ width: '40px', height: '40px' }}>
+          <FaTwitch className='text-white text-2xl'/>
+        </div>
+      </Link>
+    </li>
+  )}
+  {profileData.discord && (
+    <li className="mr-4">
+      <Link href={profileData.discord}>
+        <div className="flex items-center justify-center bg-indigo-400 rounded-lg cursor-pointer" style={{ width: '40px', height: '40px' }}>
+          <FaDiscord className="text-white text-2xl" />
+        </div>
+      </Link>
+    </li>
+  )}
+  {profileData.instagram && (
+    <li className="mr-4">
+      <Link href={profileData.instagram}>
+        <div className="flex items-center justify-center bg-white rounded-lg cursor-pointer" style={{ width: '40px', height: '40px' }}>
+          <img src='/instagram.png' alt="Instagram" className="text-white text-2xl" />
+        </div>
+      </Link>
+    </li>
+  )}
+  {profileData.twitter && (
+    <li className="mr-4">
+      <Link href={profileData.twitter}>
+        <div className="flex items-center justify-center bg-black rounded-lg cursor-pointer" style={{ width: '40px', height: '40px' }}>
+          <FaXTwitter className="text-white text-2xl" />
+        </div>
+      </Link>
+    </li>
+  )}
+  {profileData.facebook && (
+    <li>
+      <Link href={profileData.facebook}>
+        <div className="flex items-center justify-center bg-blue-600 rounded-full cursor-pointer" style={{ width: '40px', height: '40px' }}>
+          <FaFacebook className="text-white text-2xl" />
+        </div>
+      </Link>
+    </li>
+  )}
+</ul>
+  
       </div>
-      
     </div>
   );
 };

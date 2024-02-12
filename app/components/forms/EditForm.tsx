@@ -15,6 +15,11 @@ type ProfileData = {
   favorite_games?: string | null;
   favorite_device?: string | null;
   looking_for?: string | null;
+  twitch?: string | null;
+  twitter?: string | null;
+  instagram?: string | null;
+  discord?: string | null;
+  facebook?: string | null;
   image?: string | null;
   player_id?: number;
 };
@@ -24,6 +29,11 @@ const FormSchema = z.object({
   looking_for: z.string().optional(),
   favorite_games: z.string().optional(),
   favorite_device: z.string().optional(),
+  instagram: z.string().optional(),
+  facebook: z.string().optional(),
+  twitter: z.string().optional(),
+  twitch: z.string().optional(),
+  discord: z.string().optional(),
   image: z.string().optional(),
 });
 
@@ -181,6 +191,102 @@ const EditForm = () => {
                 </FormItem>
               )}
             />
+
+<FormField
+              control={form.control}
+              name="instagram"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Instagram:</FormLabel>
+                  <FormControl>
+                  <input 
+                      type="text" 
+                      className='border border-indigo-200 rounded-md w-full p-2' 
+                      placeholder="Link your Instagram Account" 
+                      {...field} 
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+
+<FormField
+              control={form.control}
+              name="discord"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Discord:</FormLabel>
+                  <FormControl>
+                  <input 
+                      type="text" 
+                      className='border border-indigo-200 rounded-md w-full p-2' 
+                      placeholder="Link your Discord Account" 
+                      {...field} 
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+
+<FormField
+              control={form.control}
+              name="twitch"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Twitch:</FormLabel>
+                  <FormControl>
+                  <input 
+                      type="text" 
+                      className='border border-indigo-200 rounded-md w-full p-2' 
+                      placeholder="Link your Twitch Account" 
+                      {...field} 
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+
+<FormField
+              control={form.control}
+              name="facebook"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Facebook:</FormLabel>
+                  <FormControl>
+                  <input 
+                      type="text" 
+                      className='border border-indigo-200 rounded-md w-full p-2' 
+                      placeholder="Link your Facebook Account" 
+                      {...field} 
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+
+        <FormField
+              control={form.control}
+              name="twitter"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>X:</FormLabel>
+                  <FormControl>
+                  <input 
+                      type="text" 
+                      className='border border-indigo-200 rounded-md w-full p-2' 
+                      placeholder="Link your X account" 
+                      {...field} 
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+
             <FormField
               control={form.control}
               name="image"
@@ -199,6 +305,7 @@ const EditForm = () => {
                 </FormItem>
               )}
             />
+            <br></br>
             <Button type="submit">Update Profile</Button>
           </form>
         </Form>
