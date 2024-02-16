@@ -35,4 +35,4 @@ yarn-error.log*
 next-env.d.ts
 
 #editing pages 
-/app/(auth)/chat/page.tsx
+'/app/(auth)/chat/page.tsx'

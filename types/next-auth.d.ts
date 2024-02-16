@@ -6,6 +6,7 @@ import { Url } from "next/dist/shared/lib/router/router";
 declare module "next-auth" {
   interface Player {
     player_id: number; 
+    id: number | string;
     username: string | null;
     email: string;
     first_name: string;
