@@ -67,12 +67,12 @@ async function page(){
       <div className="chat-message">
          <div className="flex items-end">
             <div className="flex flex-col space-y-2 text-xs max-w-xs mx-2 order-2 items-start">
-               <div><span className="px-4 py-2 rounded-lg inline-block bg-gray-300 text-gray-600">Command was run with root privileges. I'm sure about that.</span></div>
-               <div><span className="px-4 py-2 rounded-lg inline-block bg-gray-300 text-gray-600">I've update the description so it's more obviously now</span></div>
+               <div><span className="px-4 py-2 rounded-lg inline-block bg-gray-300 text-gray-600">Command was run with root privileges. I&apos;m sure about that.</span></div>
+               <div><span className="px-4 py-2 rounded-lg inline-block bg-gray-300 text-gray-600">I&apos;ve update the description so it&apos;s more obviously now</span></div>
                <div><span className="px-4 py-2 rounded-lg inline-block bg-gray-300 text-gray-600">FYI https://askubuntu.com/a/700266/510172</span></div>
                <div>
                   <span className="px-4 py-2 rounded-lg inline-block rounded-bl-none bg-gray-300 text-gray-600">
-                     Check the line above (it ends with a # so, I'm running it as root )
+                     Check the line above (it ends with a # so, I&apos;m running it as root )
                      <pre># npm install -g @vue/devtools</pre>
                   </span>
                </div>
@@ -83,7 +83,7 @@ async function page(){
       <div className="chat-message">
          <div className="flex items-end justify-end">
             <div className="flex flex-col space-y-2 text-xs max-w-xs mx-2 order-1 items-end">
-               <div><span className="px-4 py-2 rounded-lg inline-block rounded-br-none bg-blue-600 text-white ">Any updates on this issue? I'm getting the same error when trying to install devtools. Thanks</span></div>
+               <div><span className="px-4 py-2 rounded-lg inline-block rounded-br-none bg-blue-600 text-white ">Any updates on this issue? I&apos;m getting the same error when trying to install devtools. Thanks</span></div>
             </div>
             <img src="https://images.unsplash.com/photo-1590031905470-a1a1feacbb0b?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=facearea&amp;facepad=3&amp;w=144&amp;h=144" alt="My profile" className="w-6 h-6 rounded-full order-2" />
          </div>
@@ -91,7 +91,7 @@ async function page(){
       <div className="chat-message">
          <div className="flex items-end">
             <div className="flex flex-col space-y-2 text-xs max-w-xs mx-2 order-2 items-start">
-               <div><span className="px-4 py-2 rounded-lg inline-block rounded-bl-none bg-gray-300 text-gray-600">Thanks for your message David. I thought I'm alone with this issue. Please, ? the issue to support it :)</span></div>
+               <div><span className="px-4 py-2 rounded-lg inline-block rounded-bl-none bg-gray-300 text-gray-600">Thanks for your message David. I thought I&apos;m alone with this issue. Please, ? the issue to support it :)</span></div>
             </div>
             <img src="https://images.unsplash.com/photo-1549078642-b2ba4bda0cdb?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=facearea&amp;facepad=3&amp;w=144&amp;h=144" alt="My profile" className="w-6 h-6 rounded-full order-1" />
          </div>

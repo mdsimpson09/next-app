@@ -79,7 +79,7 @@ const Profile: React.FC<ProfileProps> = ({ player }) => {
         <p className="text-gray-700 font-bold capitalize"> About Me: </p>
         <p> {profileData.bio || ""}</p>
         <br></br>
-        <p className="text-gray-700 font-bold capitalize"> I'm looking for:</p>
+        <p className="text-gray-700 font-bold capitalize"> I&apos;m looking for:</p>
         <p className="text-gray-700">{profileData.looking_for || ""}</p>
         <br></br>
         <p className="text-gray-700 font-bold capitalize"> My Favorite Games: </p>

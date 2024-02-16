@@ -68,7 +68,7 @@ const UserProfilePage: React.FC = () => {
         <p className="text-gray-700 font-bold capitalize"> about me: </p>
         <p> {userProfile.bio || ""}</p>
         <br />
-        <p className="text-gray-700 font-bold capitalize"> I'm looking for:</p>
+        <p className="text-gray-700 font-bold capitalize"> I&apos;m looking for:</p>
         <p className="text-gray-700">{userProfile.looking_for || ""}</p>
         <br />
 
