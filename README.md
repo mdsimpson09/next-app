@@ -6,6 +6,9 @@ Prisma is developer friendly and easy to use. It also has a transparent developm
 
 Postgresql was used due to its popularity and well-regarded open-source relational databses. It has a large list of features in regards to performance, security, programming extentions and configuration. 
 
+React Icons were used throughout the app 
+
+radix-ui was used to create cohesive sign-up, login, and editing forms. It also has a good documentation and examples.
 
 ## Getting Started
 
@@ -40,6 +43,8 @@ The easiest way to deploy your Next.js app is to use the [Vercel Platform](https
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
 
-Cypress is used for E2E testing
+Cypress is used for E2E testing due to React docs stating that, since async server components are new to react, some tools are not fully supported, so they recommend end-to-end testing over unit testing. 
+
 tests were run and stored on the cypress cloud. 124 passed and 0 failed tests 
 
+https://cloud.cypress.io/projects/9v8q98/analytics/runs-over-time
