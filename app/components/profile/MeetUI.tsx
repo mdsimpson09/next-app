@@ -45,7 +45,7 @@ const Meet: React.FC<MeetProps> = ({ player, toggleRefresh }) => {
         <p className="text-gray-700 font-bold capitalize"> about me: </p>
         <p>{player.bio || ""}</p>
         <br />
-        <p className="text-gray-700 font-bold capitalize"> I'm looking for:</p>
+        <p className="text-gray-700 font-bold capitalize"> I&apos;m looking for:</p>
         <p className="text-gray-700">{player.looking_for || ""}</p>
       </div>
       <br></br>

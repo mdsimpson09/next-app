@@ -205,7 +205,7 @@ const SignUpForm = () => {
       </div>
        <GoogleSignInButton>Sign-in with Google</GoogleSignInButton>
     <p className= "text-center text-sm text-gray-600 mt-2">
-          If you really don't want to sign up, you can return&nbsp; 
+          If you really don&apos;t want to sign up, you can return&nbsp; 
           <Link className='text-blue-500 hover:underline' href= '/'>Home</Link>.
     </p>
     </Form>

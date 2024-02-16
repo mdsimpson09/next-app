@@ -28,7 +28,7 @@ const AboutPage = () => {
         <ul className="list-decimal ml-4">
             <li className="mb-4">
               <strong>Sign Up</strong>
-              <p>Visit the Gamer Date website or download the app, and click on 'Sign Up' to create your account.</p>
+              <p>Visit the Gamer Date website or download the app, and click on the Sign Up link to create your account.</p>
             </li>
             <li className="mb-4">
               <strong>Complete Your Registration</strong>
@@ -40,7 +40,7 @@ const AboutPage = () => {
             </li>
             <li className="mb-4">
               <strong>Express Your Gaming Preferences</strong>
-              <p>Let others know your preferred way to connect and what you're looking for on Gamer Date, be it squads, friends, or followers.</p>
+              <p>Let others know your preferred way to connect and what you&apos;re looking for on Gamer Date, be it squads, friends, or followers.</p>
             </li>
             <li className="mb-4">
               <strong>Upload a Profile Photo</strong>
@@ -52,7 +52,7 @@ const AboutPage = () => {
             </li>
             <li className="mb-4">
               <strong>Matching with Other Gamers</strong>
-              <p>When mutual interest is shown, gamers appear on each other's 'Matches' page, where you can view their full profile and connect.</p>
+               <p>When mutual interest is shown, gamers appear on each other&apos;s &apos;Matches&apos; page, where you can view their full profile and connect.</p>
             </li>
             <li className="mb-4">
               <strong>Start Building Connections</strong>
@@ -70,15 +70,15 @@ const AboutPage = () => {
           <div className="grid md:grid-cols-2 gap-6">
             <div className="bg-indigo-50 p-4 rounded-lg shadow-lg">
               <p className="font-semibold">EpicRogueQueen</p>
-              <p>"Gamer Date is a game-changer! It's been amazing for finding my squad. We've been dominating leaderboards ever since. Big shoutout to Gamer Date for making this possible!"</p>
+              <p>&quot;Gamer Date is a game-changer! It&apos;s been amazing for finding my squad. We&apos;ve been dominating leaderboards ever since. Big shoutout to Gamer Date for making this possible!&quot;</p>
             </div>
             <div className="bg-indigo-50 p-4 rounded-lg shadow-lg">
               <p className="font-semibold">PixelPaladin42</p>
-              <p>"Never knew how many like-minded gamers were out there until I joined Gamer Date. I've built so many incredible friendships and even found my perfect duo partner for co-op campaigns. Highly recommend it to any gamer looking to expand their network!"</p>
+              <p>&quot;Never knew how many like-minded gamers were out there until I joined Gamer Date. I&apos;ve built so many incredible friendships and even found my perfect duo partner for co-op campaigns. Highly recommend it to any gamer looking to expand their network!&quot;</p>
             </div>
             <div className="bg-indigo-50 p-4 rounded-lg shadow-lg md:col-span-2">
               <p className="font-semibold">MysticMage88</p>
-              <p>"As someone who always struggled to find a reliable team for competitive play, Gamer Date has been a lifesaver. It's like a social network but just for gamers. I've met some awesome people, and our team synergy is off the charts!"</p>
+              <p>&quot;As someone who always struggled to find a reliable team for competitive play, Gamer Date has been a lifesaver. It&apos;s like a social network but just for gamers. I&apos;ve met some awesome people, and our team synergy is off the charts!&quot;</p>
             </div>
           </div>
         </section>
