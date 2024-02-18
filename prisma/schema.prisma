@@ -72,6 +72,7 @@ model MatchedProfile {
 model Session {
   id           String   @id @default(cuid())
   sessionToken String   @unique
+  user         String   @unique
   player_Id    Int
   expires      DateTime
 

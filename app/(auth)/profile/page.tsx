@@ -6,7 +6,13 @@ import { authOptions } from "@/lib/auth";
 import Link from 'next/link';
 import { Button } from '@radix-ui/themes';
 
-
+interface ProfileProps {
+  player: {
+    name?: string;
+    email?: string;
+    // Add other relevant fields present in session.user
+  };
+}
 
 
 async function ProfilePage() {
