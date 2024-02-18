@@ -14,19 +14,19 @@ import { Button } from '@radix-ui/themes';
 
 interface ProfileProps {
   player: {
-    first_name: string | null;
-    username: string | null;
-    bio: string | null;
-    looking_for: string | null;
-    favorite_games: string | null;
-    favorite_device: string | null;
-    image: string | null;
-    player_id: number;
-    instagram: string | null;
-    twitter: string | null;
-    discord: string | null;
-    twitch: string | null;
-    facebook: string | null;
+    first_name?: string | null;
+    username?: string | null;
+    bio?: string | null;
+    looking_for?: string | null;
+    favorite_games?: string | null;
+    favorite_device?: string | null;
+    image?: string | null;
+    player_id?: number;
+    instagram?: string | null;
+    twitter?: string | null;
+    discord?: string | null;
+    twitch?: string | null;
+    facebook?: string | null;
   };
 }
 
